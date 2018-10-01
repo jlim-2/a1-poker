@@ -102,7 +102,6 @@ public class Card {
 		char suitChar = cardString.charAt(0);
 		suitString = String.valueOf(suitChar);
 		
-		
 		return suitString;
 	}
 	

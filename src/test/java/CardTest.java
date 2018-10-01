@@ -27,4 +27,19 @@ public class CardTest extends TestCase{
 		
 		assertFalse(card1.compareSuit(card2));
 	}
+	
+	public void testConvertSuit() {
+		Card card = new Card("DQ");
+		
+		card.convertSuitStringToInt(card);
+		
+		assertEquals(1, card.getSuitInt());
+	}
+	
+	public void testConvertRank() {
+		Card card = new Card("C8");
+		
+		card.convertRankStringToInt(card);
+		assertEquals(8, card.getRankInt());
+	}
 }
