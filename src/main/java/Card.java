@@ -88,7 +88,7 @@ public class Card {
 			case "3":	rank = 3;
 						break;
 						
-			case "2":	rank = 3;
+			case "2":	rank = 2;
 						break;
 						
 			default:	rank = 0;
@@ -119,5 +119,70 @@ public class Card {
 		return rank;
 	}
 	
-	
+	public String toString() {
+		String cardName = "";
+		
+		switch (getRankString()) {
+			case "A":	cardName += "Ace";
+						break;
+			
+			case "K":	cardName += "King";
+						break;
+					
+			case "Q":	cardName += "Queen";
+						break;
+					
+			case "J":	cardName += "Jack";
+						break;
+					
+			case "10":	cardName += "Ten";
+						break;
+					
+			case "9":	cardName += "Nine";
+						break;
+					
+			case "8":	cardName += "Eight";
+						break;
+					
+			case "7":	cardName += "Seven";
+						break;
+			
+			case "6":	cardName += "Six";
+						break;
+					
+			case "5":	cardName += "Five";
+						break;
+					
+			case "4":	cardName += "Four";
+						break;
+					
+			case "3":	cardName += "Three";
+						break;
+					
+			case "2":	cardName += "Two";
+						break;
+					
+			default:	cardName += "Invalid";
+		}
+		
+		cardName += " of ";
+		
+		switch (getSuitString()) {
+			case "S":	cardName += "Spades";
+						break;
+						
+			case "H":	cardName += "Hearts";
+						break;
+						
+			case "C":	cardName += "Clubs";
+						break;
+						
+			case "D":	cardName += "Diamonds";
+						break;
+						
+			default:	cardName += "Invalid";
+		}
+		
+		return cardName;
+	}
 }
