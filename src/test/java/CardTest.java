@@ -5,8 +5,8 @@ public class CardTest extends TestCase{
 	public void testSampleCard() {
 		Card card = new Card("SK");
 		
-		assertEquals(12, card.getRank());
-		assertEquals(1,  card.getSuit());
+		assertEquals("K", card.getRankString());
+		assertEquals("S",  card.getSuitString());
 	}
 	
 	public void testCompareRank() {

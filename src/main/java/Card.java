@@ -21,16 +21,16 @@ public class Card {
 	}
 	
 	public String getSuitString() {
-		char suit = cardString.charAt(0);
-		suitString = String.valueOf(suitString);
+		char suitChar = cardString.charAt(0);
+		suitString = String.valueOf(suitChar);
 		
 		
 		return suitString;
 	}
 	
 	public String getRankString() {
-		char rank = cardString.charAt(1);
-		rankString = String.valueOf(rankString);
+		char rankChar = cardString.charAt(1);
+		rankString = String.valueOf(rankChar);
 		
 		return rankString;
 	}
