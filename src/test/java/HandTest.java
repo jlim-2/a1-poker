@@ -1,3 +1,5 @@
+import java.io.File;
+
 import junit.framework.TestCase;
 
 public class HandTest extends TestCase {
@@ -22,5 +24,42 @@ public class HandTest extends TestCase {
 		Hand h = new Hand(card1, card2, card3, card4, card5);
 		
 		assertEquals("Jack of Clubs", h.getCardAtIndex(1).toString());
+	}
+	
+	public void testReadInHand() {
+		String testFile = "/src/test/resources/testhand.txt";
+		ClassLoader cl = getClass().getClassLoader();
+		File file = new File(cl.getResource(testFile).getFile());
+		
+		Hand h = new Hand(file);
+		
+		for (int i = 0; i < h.getCards().length; i++) {
+			Card c = h.getCardAtIndex(i);
+			
+			switch(i) {
+			case 0:
+				assertEquals("King of Spades", c.toString());
+				break;
+				
+			case 1:
+				assertEquals("Nine of Spades", c.toString());
+				break;
+				
+			case 2:
+				assertEquals("Six of Hearts", c.toString());
+				break;
+				
+			case 3:
+				assertEquals("Nine of Hearts", c.toString());
+				break;
+				
+			case 4:
+				assertEquals("Queen of Clubs", c.toString());
+				break;
+				
+			default:
+				
+			}
+		}
 	}
 }

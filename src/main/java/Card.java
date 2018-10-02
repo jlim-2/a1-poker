@@ -29,6 +29,7 @@ public class Card {
 	public int convertSuitStringToInt(Card card) {
 		String tempSuit = card.getSuitString();
 		
+		
 		switch (tempSuit) {
 			case "S":	suit = 4;
 						break;
