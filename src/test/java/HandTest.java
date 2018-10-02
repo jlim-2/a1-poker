@@ -31,35 +31,6 @@ public class HandTest extends TestCase {
 		ClassLoader cl = getClass().getClassLoader();
 		File file = new File(cl.getResource(testFile).getFile());
 		
-		Hand h = new Hand(file);
 		
-		for (int i = 0; i < h.getCards().length; i++) {
-			Card c = h.getCardAtIndex(i);
-			
-			switch(i) {
-			case 0:
-				assertEquals("King of Spades", c.toString());
-				break;
-				
-			case 1:
-				assertEquals("Nine of Spades", c.toString());
-				break;
-				
-			case 2:
-				assertEquals("Six of Hearts", c.toString());
-				break;
-				
-			case 3:
-				assertEquals("Nine of Hearts", c.toString());
-				break;
-				
-			case 4:
-				assertEquals("Queen of Clubs", c.toString());
-				break;
-				
-			default:
-				
-			}
-		}
 	}
 }
