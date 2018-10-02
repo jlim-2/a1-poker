@@ -105,8 +105,9 @@ public class Card {
 	}
 	
 	public String getRankString() {
-		char rankChar = cardString.charAt(1);
-		rankString = String.valueOf(rankChar);
+		rankString = cardString.substring(1);
+		
+		System.out.println(rankString);
 		
 		return rankString;
 	}

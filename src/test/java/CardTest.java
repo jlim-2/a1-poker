@@ -48,4 +48,10 @@ public class CardTest extends TestCase{
 		
 		assertEquals("Six of Hearts", card.toString());
 	}
+	
+	public void testGetRankString() {
+		Card card = new Card("S10");
+		
+		assertEquals("10", card.getRankString());
+	}
 }
