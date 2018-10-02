@@ -54,4 +54,10 @@ public class CardTest extends TestCase{
 		
 		assertEquals("10", card.getRankString());
 	}
+	
+	public void testGetSuitString() {
+		Card card = new Card("H9");
+		
+		assertEquals("H", card.getSuitString());
+	}
 }
