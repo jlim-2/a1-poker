@@ -1,3 +1,4 @@
+import java.io.File;
 
 public class Hand {
 	private Card[] cards;
@@ -12,12 +13,20 @@ public class Hand {
 		cards[4] = c5;
 	}
 	
+	public Hand (File file) {
+		
+	}
+	
 	public Card getCardAtIndex(int i) {		
 		if (i > cards.length) {
 			return null;
 		} else {
 			return cards[i];
 		}
+	}
+	
+	public Card[] getCards() {
+		return cards;
 	}
 	
 }
