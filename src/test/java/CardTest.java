@@ -18,18 +18,8 @@ public class CardTest extends TestCase{
 		Card card1 = new Card("DK");
 		Card card2 = new Card("H10");
 		
-		assertFalse(card2.compareRank(card1));
-		assertTrue(card1.compareRank(card2));
-	}
-	
-	public void testCompareSuit() {
-		//Comparing two cards, by suit
-		
-		Card card1 = new Card("SA");
-		Card card2 = new Card("DA");
-		
-		assertFalse(card1.compareSuit(card2));
-		assertTrue(card2.compareSuit(card1));
+		assertFalse(card2.compareCard(card1));
+		assertTrue(card1.compareCard(card2));
 	}
 	
 	public void testConvertSuit() {

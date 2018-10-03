@@ -31,11 +31,28 @@ public class Hand {
 	
 	public void sortHand() {
 		for (int i = 0; i < cards.length; i++) {
-			if (i + 1 != cards.length) {
-				Card temp = cards[i];
-				cards[i] = cards[i + 1];
-				cards[i + 1] = temp;
+			System.out.println(cards[i].toString());
+		}
+		
+		Card temp;
+		int min;
+		
+		for (int i = 0; i < cards.length; i++) {
+			min = i;
+			
+			for (int j = i; j < cards.length; j++) {
+				if (cards[i].compareRank(cards[j])) {
+					min = j;
+				}
 			}
+			
+			temp = cards[min];
+			cards[min] = cards[i];
+			cards[i] = temp;
+		}
+		
+		for (int i = 0; i < cards.length; i++) {
+			System.out.println(cards[i].toString());
 		}
 	}
 	

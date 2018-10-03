@@ -1,6 +1,5 @@
 
 public class Card {
-	private String cardString;
 	private String suitString;
 	private String rankString;
 	private int suit;
@@ -14,22 +13,10 @@ public class Card {
 		convertRankStringToInt();
 	}
 	
-	public Boolean compareRank(Card card) {
-		if (card.getRankInt() == rank) {
-			compareSuit(card);
-		} else if (card.getRankInt() > rank) {
-			//the given card is higher than the original
-			return false;
-		}
-		
-		return true;
-	}
-	
-	public Boolean compareSuit(Card card) {
-		if (card.getSuitInt() > suit) {
-			return true;
-		} else {
-			return false;
+	public Boolean compareCard(Card card) {
+		if (this.getRankInt() > card.getRankInt() ||
+			(this.getRankInt() == card.getRankInt() && this.getSuitInt() > card.getSuitInt())){
+			
 		}
 	}
 	
