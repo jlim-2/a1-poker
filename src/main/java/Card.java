@@ -6,16 +6,23 @@ public class Card {
 	private int suit;
 	private int rank;
 	
-	public Card(String suitRank) {
-		cardString = suitRank;
+	public Card(String card) {
+		char suitChar = card.charAt(0);
+		suitString = String.valueOf(suitChar);
+		rankString = card.substring(1);
+		convertSuitStringToInt();
+		convertRankStringToInt();
 	}
 	
 	public Boolean compareRank(Card card) {
-		if (card.getRankInt() > rank) {
-			return true;
-		} else {
+		if (card.getRankInt() == rank) {
+			compareSuit(card);
+		} else if (card.getRankInt() > rank) {
+			//the given card is higher than the original
 			return false;
 		}
+		
+		return true;
 	}
 	
 	public Boolean compareSuit(Card card) {
@@ -26,9 +33,8 @@ public class Card {
 		}
 	}
 	
-	public int convertSuitStringToInt(Card card) {
-		String tempSuit = card.getSuitString();
-		
+	public void convertSuitStringToInt() {
+		String tempSuit = suitString;
 		
 		switch (tempSuit) {
 			case "S":	suit = 4;
@@ -45,12 +51,10 @@ public class Card {
 						
 			default:	suit = 0;
 		}
-		
-		return suit;
 	}
 	
-	public int convertRankStringToInt(Card card) {
-		String tempRank = card.getRankString();
+	public void convertRankStringToInt() {
+		String tempRank = rankString;
 		
 		switch(tempRank) {
 			case "A":	rank = 14;
@@ -94,24 +98,20 @@ public class Card {
 						
 			default:	rank = 0;
 		}
-		
-		return rank;
 	}
 	
 	public String getSuitString() {
-		char suitChar = cardString.charAt(0);
-		suitString = String.valueOf(suitChar);
 		
 		return suitString;
 	}
 	
 	public String getRankString() {
-		rankString = cardString.substring(1);
 		
 		return rankString;
 	}
 	
 	public int getSuitInt() {
+		
 		return suit;
 	}
 	
