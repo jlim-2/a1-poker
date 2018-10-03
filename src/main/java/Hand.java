@@ -31,11 +31,8 @@ public class Hand {
 	
 	public void sortHand() {
 		for (int i = 0; i < cards.length; i++) {
-			if (cards[i].compareRank(cards[i + 1])) {
-				
-			} else {
+			if (i + 1 != cards.length) {
 				Card temp = cards[i];
-				
 				cards[i] = cards[i + 1];
 				cards[i + 1] = temp;
 			}

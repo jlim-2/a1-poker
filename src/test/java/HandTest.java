@@ -37,7 +37,9 @@ public class HandTest extends TestCase {
 		h.sortHand();
  		
  		for (int i = 0; i < h.getCards().length; i++) {
- 			assertTrue(h.getCardAtIndex(i).compareRank(h.getCardAtIndex(i + 1)));
+ 			if ((i + 1) != h.getCards().length) {
+ 				assertFalse(h.getCardAtIndex(i).compareRank(h.getCardAtIndex(i + 1)));
+ 			}
  		}
 	}
 }
