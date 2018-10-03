@@ -34,23 +34,21 @@ public class Hand {
 			System.out.println(cards[i].toString());
 		}
 		
-		Card temp;
-		int min;
-		
-		for (int i = 0; i < cards.length; i++) {
-			min = i;
+		for (int i = 0; i < cards.length - 1; i++) {
+			int min = i;
 			
-			for (int j = i; j < cards.length; j++) {
-				if (cards[i].compareRank(cards[j])) {
+			for (int j = i + 1; j < cards.length; j++) {
+				if (cards[j].compareCard(cards[min])) {
 					min = j;
 				}
 			}
 			
-			temp = cards[min];
+			Card temp = cards[min];
 			cards[min] = cards[i];
 			cards[i] = temp;
 		}
 		
+		System.out.println("\nAfter sorting:");
 		for (int i = 0; i < cards.length; i++) {
 			System.out.println(cards[i].toString());
 		}

@@ -38,7 +38,7 @@ public class HandTest extends TestCase {
  		
  		for (int i = 0; i < h.getCards().length; i++) {
  			if ((i + 1) != h.getCards().length) {
- 				
+ 				assertTrue(h.getCardAtIndex(i).compareCard(h.getCardAtIndex(i + 1)));
  			}
  		}
 	}

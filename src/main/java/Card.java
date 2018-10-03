@@ -16,7 +16,9 @@ public class Card {
 	public Boolean compareCard(Card card) {
 		if (this.getRankInt() > card.getRankInt() ||
 			(this.getRankInt() == card.getRankInt() && this.getSuitInt() > card.getSuitInt())){
-			
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
