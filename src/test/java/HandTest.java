@@ -26,11 +26,18 @@ public class HandTest extends TestCase {
 		assertEquals("Jack of Clubs", h.getCardAtIndex(1).toString());
 	}
 	
-	public void testReadInHand() {
-		String testFile = "/src/test/resources/testhand.txt";
-		ClassLoader cl = getClass().getClassLoader();
-		File file = new File(cl.getResource(testFile).getFile());
+	public void testSortHand() {
+		Card card1 = new Card("DK");
+		Card card2 = new Card("CJ");
+		Card card3 = new Card("SA");
+		Card card4 = new Card("SQ");
+		Card card5 = new Card("H9");
+		Hand h = new Hand(card1, card2, card3, card4, card5);
 		
+		h.sortHand();
 		
+		for (int i = 0; i < h.getCards().length; i++) {
+			assertTrue(h.getCardAtIndex(i).compareRank(h.getCardAtIndex(i + 1)));
+		}
 	}
 }
