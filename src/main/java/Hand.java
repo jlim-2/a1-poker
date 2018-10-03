@@ -30,10 +30,6 @@ public class Hand {
 	}
 	
 	public void sortHand() {
-		for (int i = 0; i < cards.length; i++) {
-			System.out.println(cards[i].toString());
-		}
-		
 		for (int i = 0; i < cards.length - 1; i++) {
 			int min = i;
 			
@@ -46,11 +42,6 @@ public class Hand {
 			Card temp = cards[min];
 			cards[min] = cards[i];
 			cards[i] = temp;
-		}
-		
-		System.out.println("\nAfter sorting:");
-		for (int i = 0; i < cards.length; i++) {
-			System.out.println(cards[i].toString());
 		}
 	}
 	

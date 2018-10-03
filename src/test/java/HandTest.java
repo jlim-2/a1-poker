@@ -44,8 +44,8 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testHandRead() {
-		String handText;
-		Hand h = new Hand(handText);
+		File
+		Hand h = new Hand(File );
 		
 		assertNotNull(h);		
 	}
