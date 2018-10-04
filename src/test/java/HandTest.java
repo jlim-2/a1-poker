@@ -57,6 +57,7 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testRank() {
+		h.evalHand();
 		
 		assertEquals(1, h.getRank());
 	}

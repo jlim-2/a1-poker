@@ -100,4 +100,10 @@ public class Hand {
 			extraCards[i] = card;
 		}
 	}
+	
+	public int getRank() {
+		int rank;
+		
+		return rank;
+	}
 }
