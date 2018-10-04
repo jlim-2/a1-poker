@@ -5,8 +5,8 @@ public class GameTest extends TestCase{
 		Game g = new Game();
 		
 		assertNotNull(g);
-		assertNotNull(g.getHand1());
-		assertNotNull(g.getHand2());
+		assertNotNull(g.getAIHand());
+		assertNotNull(g.getOppHand());
 	}
 	
 	public void testWelcomeMessage() {

@@ -8,7 +8,6 @@ public class Game {
 		welcomeMessage = "Welcome to Poker!";
 		//compHand = new Hand(file);
 		//oppHand = new Hand(file);
-		run();
 	}
 	
 	public String getWelcomeMessage() {
@@ -17,6 +16,9 @@ public class Game {
 	
 	public void run() {
 		System.out.println(welcomeMessage);
+		
+		System.out.println("Dealing cards to AI first...");
+		
 	}
 	
 	public Hand getAIHand() {
@@ -25,5 +27,11 @@ public class Game {
 	
 	public Hand getOppHand() {		
 		return oppHand;
+	}
+	
+	public static void main(String[] args) {
+		Game g = new Game();
+		
+		g.run();
 	}
 }
