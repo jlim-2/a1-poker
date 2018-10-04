@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Hand {
 	private Card[] cards;
+	private String text = "";
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new Card[5];
@@ -15,11 +16,10 @@ public class Hand {
 		cards[4] = c5;
 	}
 	
-	public Hand (File file) {
-		String text = "";
+	/*public Hand (File file) {
 		cards = new Card[5];
 		
-		/*try (Scanner scanner = new Scanner(file)){
+		try (Scanner scanner = new Scanner(file)){
 			text = scanner.nextLine();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -35,10 +35,27 @@ public class Hand {
 			
 			Card card = new Card(cardText);
 			cards[i] = card;
-		}*/
+		}
 		
 		
-		
+		setHand();
+	}*/
+	
+	public Hand (String cards) {
+		this.cards = new Card[5];
+		setHand(cards);
+	}
+	
+	public void setHand(String hand) {
+		for (int i = 0; i < cards.length; i++) {
+			String cardText = "";
+			cardText = hand.substring(0, 2);
+			
+			hand = hand.replace(cardText + " ", "");
+			
+			Card card = new Card(cardText);
+			cards[i] = card;
+		}
 	}
 	
 	public Card getCardAtIndex(int i) {		

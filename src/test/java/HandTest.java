@@ -1,5 +1,3 @@
-import java.io.File;
-
 import junit.framework.TestCase;
 
 public class HandTest extends TestCase {
@@ -41,14 +39,5 @@ public class HandTest extends TestCase {
  				assertTrue(h.getCardAtIndex(i).compareCard(h.getCardAtIndex(i + 1)));
  			}
  		}
-	}
-	
-	public void testHandRead() {
-		ClassLoader loader = getClass().getClassLoader();
-		File file = new File(loader.getResource("testhand.txt").getFile());
-		
-		Hand h = new Hand(file);
-		
-		assertNotNull(h.getCards());
 	}
 }

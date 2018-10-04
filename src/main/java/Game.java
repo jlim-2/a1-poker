@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Game {
 	private String welcomeMessage = "";
@@ -10,8 +12,23 @@ public class Game {
 		
 		ClassLoader loader = getClass().getClassLoader();
 		File file = new File(loader.getResource("games.txt").getFile());
-		compHand = new Hand(file);
-		oppHand = new Hand(file);
+		String text = "";
+		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String comp = text.substring(0, 14);
+		String opp = text.substring(15, 29);
+		
+		System.out.println(comp);
+		System.out.println(opp);
+		
+		compHand = new Hand(comp);
+		oppHand = new Hand(opp);
+		
 	}
 	
 	public String getWelcomeMessage() {
@@ -26,21 +43,22 @@ public class Game {
 		
 		for (int i = 0; i < compHand.getCards().length; i++) {
 			System.out.print(compHand.getCardAtIndex(i).toString());
-			if (i < 4) {
-				System.out.print(", ");;
-			}
-		}
-		
-		System.out.println("\n\nHand to beat");
-		
-		for (int i = 0; i < oppHand.getCards().length; i++) {
-			System.out.print(oppHand.getCardAtIndex(i).toString());
-			if (i < 4) {
+			
+			if (i != 4) {
 				System.out.print(", ");
 			}
 		}
 		
+		System.out.print("\n\nHand to beat:\n");
 		
+		for (int i = 0; i < oppHand.getCards().length; i++) {
+			System.out.print(oppHand.getCardAtIndex(i).toString());
+			
+			if (i != 4) {
+				System.out.print(", ");
+			}
+		}
+				
 		
 	}
 	
