@@ -19,7 +19,7 @@ public class Hand {
 		String text = "";
 		cards = new Card[5];
 		
-		try (Scanner scanner = new Scanner(file)){
+		/*try (Scanner scanner = new Scanner(file)){
 			text = scanner.nextLine();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -35,7 +35,10 @@ public class Hand {
 			
 			Card card = new Card(cardText);
 			cards[i] = card;
-		}
+		}*/
+		
+		
+		
 	}
 	
 	public Card getCardAtIndex(int i) {		

@@ -1,3 +1,4 @@
+import java.io.File;
 
 public class Game {
 	private String welcomeMessage = "";
@@ -6,8 +7,11 @@ public class Game {
 	
 	public Game() {
 		welcomeMessage = "Welcome to Poker!";
-		//compHand = new Hand(file);
-		//oppHand = new Hand(file);
+		
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("games.txt").getFile());
+		compHand = new Hand(file);
+		oppHand = new Hand(file);
 	}
 	
 	public String getWelcomeMessage() {
@@ -18,6 +22,25 @@ public class Game {
 		System.out.println(welcomeMessage);
 		
 		System.out.println("Dealing cards to AI first...");
+		System.out.println("\nAI Cards:");
+		
+		for (int i = 0; i < compHand.getCards().length; i++) {
+			System.out.print(compHand.getCardAtIndex(i).toString());
+			if (i < 4) {
+				System.out.print(", ");;
+			}
+		}
+		
+		System.out.println("\n\nHand to beat");
+		
+		for (int i = 0; i < oppHand.getCards().length; i++) {
+			System.out.print(oppHand.getCardAtIndex(i).toString());
+			if (i < 4) {
+				System.out.print(", ");
+			}
+		}
+		
+		
 		
 	}
 	
