@@ -1,9 +1,11 @@
 
 public class Hand {
 	private Card[] cards;
+	private Card[] extraCards;
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new Card[5];
+		extraCards = new Card[3];
 		
 		cards[0] = c1;
 		cards[1] = c2;
@@ -39,6 +41,7 @@ public class Hand {
 	
 	public Hand (String cards) {
 		this.cards = new Card[5];
+		extraCards = new Card[3];
 		setHand(cards);
 	}
 	
@@ -82,4 +85,19 @@ public class Hand {
 		}
 	}
 	
+	public Card[] getExtraCards() {
+		return extraCards;
+	}
+	
+	public void addCards(String cards) {
+		for (int i = 0; i < extraCards.length; i ++) {
+			String cardText = "";
+			cardText = cards.substring(0, 2);
+			
+			cards = cards.replace(cardText + " ", "");
+			
+			Card card = new Card(cardText);
+			extraCards[i] = card;
+		}
+	}
 }
