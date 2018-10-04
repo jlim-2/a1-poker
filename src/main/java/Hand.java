@@ -33,11 +33,8 @@ public class Hand {
 			
 			handText = handText.replace(cardText + " ", "");
 			
-			System.out.println(handText);
-			
 			Card card = new Card(cardText);
 			cards[i] = card;
-			System.out.println(cards[i].toString());
 		}
 	}
 	
