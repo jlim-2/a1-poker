@@ -1,36 +1,42 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 
 public class HandTest extends TestCase {
 	
+	Hand h;
+	
+	public void init() {
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testhand.txt").getFile());
+		String text = "";
+		
+		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		h = new Hand(text);
+	}
+	
 	public void testSampleHand() {
-		Card card1 = new Card("SQ");
-		Card card2 = new Card("CJ");
-		Card card3 = new Card("D10");
-		Card card4 = new Card("C2");
-		Card card5 = new Card("CA");
-		Hand h = new Hand(card1, card2, card3, card4, card5);
+		init();
 		
 		assertNotNull(h);
 	}
 	
 	public void testGetCardAtIndex() {
-		Card card1 = new Card("DK");
-		Card card2 = new Card("CJ");
-		Card card3 = new Card("SA");
-		Card card4 = new Card("SQ");
-		Card card5 = new Card("H9");
-		Hand h = new Hand(card1, card2, card3, card4, card5);
+		init();
 		
-		assertEquals("Jack of Clubs", h.getCardAtIndex(1).toString());
+		assertEquals("Nine of Spades", h.getCardAtIndex(1).toString());
 	}
 	
 	public void testSortHand() {
-		Card card1 = new Card("DK");
-		Card card2 = new Card("CJ");
-		Card card3 = new Card("SA");
-		Card card4 = new Card("SQ");
-		Card card5 = new Card("H9");
-		Hand h = new Hand(card1, card2, card3, card4, card5);
+		init();
 		
 		h.sortHand();
  		
@@ -42,16 +48,16 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testAddSwapCards() {
-		Card card1 = new Card("DK");
-		Card card2 = new Card("CJ");
-		Card card3 = new Card("SA");
-		Card card4 = new Card("SQ");
-		Card card5 = new Card("H9");
-		Hand h = new Hand(card1, card2, card3, card4, card5);
-		String extraCards = "HK D2 HA";		
+		init();	
+		String extraCards = "HK D2 HA";	
 		
 		h.addCards(extraCards);
 		
 		assertNotNull(h.getExtraCards());
+	}
+	
+	public void testRank() {
+		
+		assertEquals(1, h.getRank());
 	}
 }
