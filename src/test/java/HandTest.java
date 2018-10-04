@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 import junit.framework.TestCase;
 
@@ -44,9 +46,12 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testHandRead() {
-		File
-		Hand h = new Hand(File );
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testhand.txt").getFile());
 		
-		assertNotNull(h);		
+		Hand h = new Hand(file);
+		
+		assertNotNull(h.getCards());
+		
 	}
 }

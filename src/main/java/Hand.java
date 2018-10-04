@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Hand {
 	private Card[] cards;
@@ -14,7 +16,29 @@ public class Hand {
 	}
 	
 	public Hand (File file) {
+		String text = "";
+		cards = new Card[5];
 		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String handText = text.substring(0, 14);
+		
+		for (int i = 0; i < cards.length; i++) {
+			String cardText = "";
+			cardText = handText.substring(0,2);
+			
+			handText = handText.replace(cardText + " ", "");
+			
+			System.out.println(handText);
+			
+			Card card = new Card(cardText);
+			cards[i] = card;
+			System.out.println(cards[i].toString());
+		}
 	}
 	
 	public Card getCardAtIndex(int i) {		
