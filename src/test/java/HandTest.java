@@ -52,6 +52,5 @@ public class HandTest extends TestCase {
 		Hand h = new Hand(file);
 		
 		assertNotNull(h.getCards());
-		
 	}
 }
