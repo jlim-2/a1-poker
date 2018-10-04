@@ -1,10 +1,6 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
 
 public class Hand {
 	private Card[] cards;
-	private String text = "";
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new Card[5];

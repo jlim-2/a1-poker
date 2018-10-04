@@ -40,4 +40,18 @@ public class HandTest extends TestCase {
  			}
  		}
 	}
+	
+	public void testAddSwapCards() {
+		Card card1 = new Card("DK");
+		Card card2 = new Card("CJ");
+		Card card3 = new Card("SA");
+		Card card4 = new Card("SQ");
+		Card card5 = new Card("H9");
+		Hand h = new Hand(card1, card2, card3, card4, card5);
+		String extraCards = "HK D2 HA";		
+		
+		h.addCards(extraCards);
+		
+		assertNotNull(h.getExtraCards());
+	}
 }

@@ -23,9 +23,6 @@ public class Game {
 		String comp = text.substring(0, 14);
 		String opp = text.substring(15, 29);
 		
-		System.out.println(comp);
-		System.out.println(opp);
-		
 		compHand = new Hand(comp);
 		oppHand = new Hand(opp);
 		
