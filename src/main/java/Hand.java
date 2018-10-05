@@ -2,6 +2,8 @@
 public class Hand {
 	private Card[] cards;
 	private Card[] extraCards;
+	private int rank;
+	private String handRank;
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new Card[5];
@@ -102,8 +104,55 @@ public class Hand {
 	}
 	
 	public int getRank() {
-		int rank;
-		
+				
 		return rank;
+	}
+	
+	public String getStringRank() {
+		return handRank;
+	}
+	
+	public void evalRank() {
+		sortHand();
+		
+		for (int i = 0; i < cards.length; i++) {
+			
+		}
+	}
+	
+	public void rankToString() {
+		switch (rank) {
+			case 1:	handRank = "High card";
+					break;
+			
+			case 2:	handRank = "Pair";
+					break;
+					
+			case 3:	handRank = "Two pair";
+					break;
+					
+			case 4: handRank = "Three of a kind";
+					break;
+					
+			case 5: handRank = "Straight";
+					break;
+					
+			case 6:	handRank = "Flush";
+					break;
+					
+			case 7:	handRank = "Full house";
+					break;
+					
+			case 8:	handRank = "Four of a kind";
+					break;
+					
+			case 9:	handRank = "Straight flush";
+					break;
+					
+			case 10:handRank = "Royal flush";
+					break;
+					
+			default:handRank = "Invalid";
+		}
 	}
 }

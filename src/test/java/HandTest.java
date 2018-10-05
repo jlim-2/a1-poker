@@ -56,9 +56,20 @@ public class HandTest extends TestCase {
 		assertNotNull(h.getExtraCards());
 	}
 	
+	public void testEvalRank() {
+		init();
+		
+		h.evalRank();
+		
+		assertEquals(2, h.getRank());
+	}
+	
 	public void testRankToString() {
 		init();
 		
-		assertEquals("Pair", h.rankToString(h.getRank()));
+		h.evalRank();
+		h.rankToString();
+		
+		assertEquals("Pair", h.getStringRank());
 	}
 }
