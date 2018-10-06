@@ -20,9 +20,12 @@ public class GameTest extends TestCase{
 	public void testNewGame() {
 		Game g = new Game();
 		
-		Hand prevAIHand = g.getAIHand();
+		Hand prevHand = g.getAIHand();
+		
 		g.newGame();
 		
-		assertNotEquals(prevAIHand, g.getAIHand());		
+		for (int i = 0; i < prevHand.getCards().length; i++) {
+			assertNotEquals(prevHand.getCardAtIndex(i), g.getAIHand());
+		}
 	}
 }

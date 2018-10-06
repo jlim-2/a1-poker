@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -6,19 +7,23 @@ public class Game {
 	private String welcomeMessage = "";
 	Hand compHand;
 	Hand oppHand;
+	String text = "";
+	File file;
+	Scanner scanner;
 	
-	public Game() {
+	public Game(){
 		welcomeMessage = "Welcome to Poker!";
 		
 		ClassLoader loader = getClass().getClassLoader();
-		File file = new File(loader.getResource("games.txt").getFile());
-		String text = "";
-		
-		try (Scanner scanner = new Scanner(file)){
-			text = scanner.nextLine();
-		} catch (IOException e) {
+		file = new File(loader.getResource("games.txt").getFile());
+		try {
+			scanner = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		newGame();
 		
 		String comp = text.substring(0, 14);
 		String opp = text.substring(15, 29);
@@ -30,6 +35,10 @@ public class Game {
 	
 	public String getWelcomeMessage() {
 		return welcomeMessage;
+	}
+	
+	public void newGame() {
+		text = scanner.nextLine();
 	}
 	
 	public void run() {
@@ -56,7 +65,7 @@ public class Game {
 			}
 		}
 				
-		
+		System.out.println();
 	}
 	
 	public Hand getAIHand() {
@@ -71,5 +80,8 @@ public class Game {
 		Game g = new Game();
 		
 		g.run();
+		
+		g.newGame();
+		System.out.println(text);
 	}
 }
