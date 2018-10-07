@@ -16,31 +16,6 @@ public class Hand {
 		cards[4] = c5;
 	}
 	
-	/*public Hand (File file) {
-		cards = new Card[5];
-		
-		try (Scanner scanner = new Scanner(file)){
-			text = scanner.nextLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		String handText = text.substring(0, 14);
-		
-		for (int i = 0; i < cards.length; i++) {
-			String cardText = "";
-			cardText = handText.substring(0,2);
-			
-			handText = handText.replace(cardText + " ", "");
-			
-			Card card = new Card(cardText);
-			cards[i] = card;
-		}
-		
-		
-		setHand();
-	}*/
-	
 	public Hand (Card[] cards) {
 		this.cards = cards;
 		extraCards = new Card[3];
@@ -79,7 +54,7 @@ public class Hand {
 	}
 	
 	public void addCards(Card[] cards) {
-		
+		extraCards = cards;
 	}
 	
 	public int getRank() {

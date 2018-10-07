@@ -12,6 +12,7 @@ public class Game {
 	String[] hands;
 	Card[] compCards;
 	Card[] oppCards;
+	Card[] swapCards;
 	
 	public Game(){
 		welcomeMessage = "Welcome to Poker!";
@@ -24,6 +25,9 @@ public class Game {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		compCards = new Card[5];
+		oppCards = new Card[5];
+		swapCards = new Card[3];
 		
 		newGame();
 		
@@ -39,9 +43,6 @@ public class Game {
 		
 		hands = text.split("\\s+");
 		
-		compCards = new Card[5];
-		oppCards = new Card[5];
-		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
 			compCards[i] = card;
@@ -56,6 +57,13 @@ public class Game {
 		}
 		
 		oppHand = new Hand(oppCards);
+		
+		for (int i = 10, j = 0; i < 13; i++, j++) {
+			Card card = new Card(hands[i]);
+			swapCards[j] = card;
+			
+			System.out.println(card.toString());
+		}
 	}
 	
 	public void run() {		
@@ -109,5 +117,7 @@ public class Game {
 			System.out.println("Play again? (type yes or no) ");
 			answer = input.nextLine();
 		}
+		
+		input.close();
 	}
 }
