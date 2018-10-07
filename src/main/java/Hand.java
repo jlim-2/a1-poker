@@ -144,7 +144,7 @@ public class Hand {
 	}
 	
 	public Boolean isPair() {
-		for (int i = 0; i < cards.length; i++) {
+		for (int i = 0; i < cards.length - 1; i++) {
 			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
 				return true;
 			}
@@ -154,7 +154,7 @@ public class Hand {
 	}
 	
 	public Boolean isTwoPair() {
-		for (int i = 0, count = 0; i < cards.length; i++) {
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
 			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
 				count++;
 			}
