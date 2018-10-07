@@ -110,6 +110,25 @@ public class Hand {
 	}
 	
 	public Boolean isStraight() {
+		//check if ace is in the hand
+		//since hand is sorted from highest rank to lowest,
+		//if ace is in the hand, it will the be first card
+		if (cards[0].getRankInt() == 14) {
+			//ace is low (A2345)
+			Boolean caseA = cards[1].getRankInt() == 5 &&
+							cards[2].getRankInt() == 4 &&
+							cards[3].getRankInt() == 3 &&
+							cards[4].getRankInt() == 2;
+			
+			//ace is high (AKQJ10)
+			Boolean caseB = cards[1].getRankInt() == 13 &&
+							cards[2].getRankInt() == 12 &&
+							cards[3].getRankInt() == 11 &&
+							cards[4].getRankInt() == 10;
+			
+			return (caseA || caseB);
+		}
+		
 		for (int i = 0, count = 0; i < cards.length - 1; i++) {
 			if (cards[i].getRankInt() - cards[i + 1].getRankInt() == 1) {
 				count++;
