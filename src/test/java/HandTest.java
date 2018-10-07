@@ -53,9 +53,6 @@ public class HandTest extends TestCase {
 		
 		h = new Hand(cards);
 		
-		for (int i = 0; i < h.getCards().length; i++) {
-			System.out.println(h.getCardAtIndex(i).toString());
-		}
 	}
 	
 	public void testSampleHand() {
