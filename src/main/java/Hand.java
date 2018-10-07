@@ -178,14 +178,29 @@ public class Hand {
 	}
 	
 	public Boolean isSet() {
-		for (int i = 0; i < cards.length; i++) {
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+				count++;
+			}
 			
+			if (count == 2) {
+				return true;
+			}
 		}
 		
 		return false;
 	}
 	
 	public Boolean isFourOfAKind() {
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+				count++;
+			}
+			
+			if (count == 3) {
+				return true;
+			}
+		}
 		
 		return false;
 	}
