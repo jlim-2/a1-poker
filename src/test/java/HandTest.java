@@ -75,7 +75,7 @@ public class HandTest extends TestCase {
 		
 		h.evalRank();
 		
-		assertEquals(5, h.getRank());
+		assertEquals(9, h.getRank());
 	}
 	
 	public void testRankToString() {
@@ -84,7 +84,7 @@ public class HandTest extends TestCase {
 		h.evalRank();
 		h.rankToString();
 		
-		assertEquals("Straight", h.getStringRank());
+		assertEquals("Straight flush", h.getStringRank());
 	}
 	
 	public void testIsStraight() {
@@ -98,6 +98,6 @@ public class HandTest extends TestCase {
 		init();
 		h.evalRank();
 		
-		assertFalse(h.isFlush());
+		assertTrue(h.isFlush());
 	}
 }
