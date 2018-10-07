@@ -92,6 +92,16 @@ public class Hand {
 			rank = 5;
 			return;
 		}
+		
+		if (isTwoPair()) {
+			rank = 3;
+			return;
+		}
+		
+		if (isPair()) {
+			rank = 2;
+			return;
+		}
 	}
 	
 

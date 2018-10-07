@@ -136,8 +136,6 @@ public class HandTest extends TestCase {
 	public void testIsTwoPair() {
 		init2();
 		
-		
-		
 		h.evalRank();
 		assertTrue(h.isTwoPair());
 	}
