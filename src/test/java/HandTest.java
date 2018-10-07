@@ -139,4 +139,25 @@ public class HandTest extends TestCase {
 		h.evalRank();
 		assertTrue(h.isTwoPair());
 	}
+	
+	public void testIsSet() {
+		init3();
+		
+		h.evalRank();
+		assertTrue(h.isSet());		
+	}
+	
+	public void testIsFullHouse() {
+		init3();
+		
+		h.evalRank();
+		assertFalse(h.isFullHouse());
+	}
+	
+	public void testIsFourOfAKind() {
+		init4();
+		
+		h.evalRank();
+		assertTrue(h.isFourOfAKind());
+	}
 }
