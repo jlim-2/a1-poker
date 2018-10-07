@@ -69,11 +69,26 @@ public class Hand {
 	public void evalRank() {
 		sortHand();
 		
+		//check if pair
 		for (int i = 0; i < cards.length; i++) {
-			
+			if (i + 1 != 5) {
+				if (cards[i].getRankInt() == cards[i+1].getRankInt()) {
+					rank = 2;
+				}
+			}
 		}
 		
-		rank = 2;
+		
+	}
+	
+	public Boolean hasAce() {
+		for (int i = 0; i < cards.length; i++) {
+			if (cards[i].getRankInt() == 14) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	public void rankToString() {

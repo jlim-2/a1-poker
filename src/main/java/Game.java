@@ -61,8 +61,6 @@ public class Game {
 		for (int i = 10, j = 0; i < 13; i++, j++) {
 			Card card = new Card(hands[i]);
 			swapCards[j] = card;
-			
-			System.out.println(card.toString());
 		}
 	}
 	
