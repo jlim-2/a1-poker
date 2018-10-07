@@ -69,23 +69,56 @@ public class Hand {
 	public void evalRank() {
 		sortHand();
 		
-		//check if pair
-		for (int i = 0; i < cards.length; i++) {
-			if (i + 1 != 5) {
-				if (cards[i].getRankInt() == cards[i+1].getRankInt()) {
-					rank = 2;
-				}
+		//check for straight flush
+		if (isStraight() && isFlush()) {
+			//check if royal flush
+			if (cards[0].getRankInt() == 14) {
+				rank = 10;
+				return;
 			}
+			
+			rank = 9;
+			return;
 		}
 		
+		//check for flush
+		if (isFlush()) {
+			rank = 6;
+			return;
+		}
+		
+		//check for straight
+		if (isStraight()) {
+			rank = 5;
+			return;
+		}
 		
 	}
 	
-	public Boolean hasAce() {
-		for (int i = 0; i < cards.length; i++) {
-			if (cards[i].getRankInt() == 14) {
+	public Boolean isFlush() {		
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getSuitInt() == cards[i + 1].getSuitInt()) {
+				count++;
+			}
+			
+			if (count == 4) {
 				return true;
 			}
+		}
+		
+		return false;
+	}
+	
+	public Boolean isStraight() {
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getRankInt() - cards[i + 1].getRankInt() == 1) {
+				count++;
+			}
+			
+			if (count == 4) {
+				return true;
+			}
+
 		}
 		
 		return false;

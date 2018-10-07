@@ -40,7 +40,7 @@ public class HandTest extends TestCase {
 	public void testGetCardAtIndex() {
 		init();
 		
-		assertEquals("Nine of Spades", h.getCardAtIndex(1).toString());
+		assertEquals("Queen of Spades", h.getCardAtIndex(1).toString());
 	}
 	
 	public void testSortHand() {
@@ -75,7 +75,7 @@ public class HandTest extends TestCase {
 		
 		h.evalRank();
 		
-		assertEquals(2, h.getRank());
+		assertEquals(5, h.getRank());
 	}
 	
 	public void testRankToString() {
@@ -84,6 +84,6 @@ public class HandTest extends TestCase {
 		h.evalRank();
 		h.rankToString();
 		
-		assertEquals("Pair", h.getStringRank());
+		assertEquals("Straight", h.getStringRank());
 	}
 }

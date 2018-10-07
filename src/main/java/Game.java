@@ -93,6 +93,13 @@ public class Game {
 		
 				
 		System.out.println("\n");
+		
+		compHand.evalRank();
+		//compHand.rankToString();
+		
+		
+		oppHand.evalRank();
+		//System.out.println(compHand.getStringRank());
 	}
 	
 	public Hand getAIHand() {
@@ -108,14 +115,14 @@ public class Game {
 		
 		g.run();
 		
-		System.out.print("Play again? (type yes or no) ");
+		System.out.print("Play again? (type y or n) ");
 		Scanner input = new Scanner(System.in);
 		String answer = input.nextLine();
-		while(!answer.equals("no")) {
+		while(!answer.equals("n")) {
 			g.newGame();
 			g.run();
 			
-			System.out.println("Play again? (type yes or no) ");
+			System.out.println("Play again? (type y or n) ");
 			answer = input.nextLine();
 		}
 		
