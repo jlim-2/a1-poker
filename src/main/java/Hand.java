@@ -153,6 +153,20 @@ public class Hand {
 		return false;
 	}
 	
+	public Boolean isTwoPair() {
+		for (int i = 0, count = 0; i < cards.length; i++) {
+			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+				count++;
+			}
+			
+			if (count == 2) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public void rankToString() {
 		switch (rank) {
 			case 1:	handRank = "High card";
