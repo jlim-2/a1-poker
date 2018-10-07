@@ -177,6 +177,24 @@ public class Hand {
 		return false;
 	}
 	
+	public Boolean isSet() {
+		for (int i = 0; i < cards.length; i++) {
+			
+		}
+		
+		return false;
+	}
+	
+	public Boolean isFourOfAKind() {
+		
+		return false;
+	}
+	
+	public Boolean isFullHouse() {
+		
+		return false;
+	}
+	
 	public void rankToString() {
 		switch (rank) {
 			case 1:	handRank = "High card";

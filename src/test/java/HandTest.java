@@ -55,6 +55,52 @@ public class HandTest extends TestCase {
 		
 	}
 	
+	public void init3() {
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testhand3.txt").getFile());
+		String text = "";
+		
+		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String[] hands = text.split("\\s+");
+		Card[] cards = new Card[5];
+		
+		for (int i = 0; i < 5; i++) {
+			Card card = new Card(hands[i]);
+			cards[i] = card;
+		}
+		
+		h = new Hand(cards);		
+	}
+	
+	public void init4() {
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testhand4.txt").getFile());
+		String text = "";
+		
+		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String[] hands = text.split("\\s+");
+		Card[] cards = new Card[5];
+		
+		for (int i = 0; i < 5; i++) {
+			Card card = new Card(hands[i]);
+			cards[i] = card;
+		}
+		
+		h = new Hand(cards);
+	}
+	
 	public void testSampleHand() {
 		init();
 		
