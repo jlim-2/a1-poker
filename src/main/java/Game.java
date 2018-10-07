@@ -4,15 +4,17 @@ import java.util.Scanner;
 
 public class Game {
 	private String welcomeMessage = "";
-	Hand compHand;
-	Hand oppHand;
-	String text = "";
-	File file;
-	Scanner scanner;
-	String[] hands;
-	Card[] compCards;
-	Card[] oppCards;
-	Card[] swapCards;
+	private Hand compHand;
+	private Hand oppHand;
+	private String text = "";
+	private File file;
+	private Scanner scanner;
+	private String[] hands;
+	private Card[] compCards;
+	private Card[] oppCards;
+	private Card[] swapCards;
+	private Boolean didCompWin = false;
+	private Boolean didOppWin = false;
 	
 	public Game(){
 		welcomeMessage = "Welcome to Poker!";
@@ -99,7 +101,39 @@ public class Game {
 		
 		
 		oppHand.evalRank();
-		//System.out.println(compHand.getStringRank());
+		System.out.println("Opponent has: " + oppHand.getStringRank());
+		System.out.println("AI player rank: " + compHand.getRank());
+		System.out.println("Opponent rank: " + oppHand.getRank());
+		
+		if (compHand.getRank() < 5) {
+			/*compHand.swapCards();
+			
+			System.out.println("Cards swapped: ");
+			compHand.evalRank();
+			 */
+		}
+		
+		if (compHand.getRank() > oppHand.getRank()) {
+			didCompWin = true;
+		} else if (compHand.getRank() == oppHand.getRank()) {
+			//check suit of flushes
+			if ((compHand.getRank() == 6) && (oppHand.getRank() == 6)) {
+				//since all cards have the same suit compare first card
+				//of each hand
+				
+				if (compHand.getCardAtIndex(0).getSuitInt() > oppHand.getCardAtIndex(0).getSuitInt()) {
+					didCompWin = true;
+				}
+			}
+		} else {
+			didOppWin = true;
+		}
+		
+		if (didCompWin) {
+			System.out.println("AI Player won!");
+		} else {
+			System.out.println("Opponent won!");
+		}
 	}
 	
 	public Hand getAIHand() {
