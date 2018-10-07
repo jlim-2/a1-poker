@@ -28,4 +28,15 @@ public class GameTest extends TestCase{
 			assertNotEquals(prevHand.getCardAtIndex(i), g.getAIHand());
 		}
 	}
+	
+	public void testWinner() {
+		Game g = new Game();
+		
+		g.run();
+		
+		g.getAIHand().evalRank();
+		g.getOppHand().evalRank();
+		
+		assertTrue(g.getAIHand().getRank() > g.getOppHand().getRank());
+	}
 }
