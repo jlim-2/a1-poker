@@ -36,10 +36,8 @@ public class Game {
 	
 	public void newGame() {
 		text = scanner.nextLine();
-		System.out.println(text);
-		hands = text.split("\\s+");
 		
-		System.out.println(hands.length);
+		hands = text.split("\\s+");
 		
 		compCards = new Card[5];
 		oppCards = new Card[5];
@@ -85,7 +83,7 @@ public class Game {
 		}
 		
 				
-		System.out.println();
+		System.out.println("\n");
 	}
 	
 	public Hand getAIHand() {
@@ -101,7 +99,15 @@ public class Game {
 		
 		g.run();
 		
-		g.newGame();
-		//g.run();
+		System.out.print("Play again? (type yes or no) ");
+		Scanner input = new Scanner(System.in);
+		String answer = input.nextLine();
+		while(!answer.equals("no")) {
+			g.newGame();
+			g.run();
+			
+			System.out.println("Play again? (type yes or no) ");
+			answer = input.nextLine();
+		}
 	}
 }
