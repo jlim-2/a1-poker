@@ -20,7 +20,15 @@ public class HandTest extends TestCase {
 			e.printStackTrace();
 		}
 		
-		h = new Hand(text);
+		String[] hands = text.split("\\s+");
+		Card[] cards = new Card[5];
+		
+		for (int i = 0; i < 5; i++) {
+			Card card = new Card(hands[i]);
+			cards[i] = card;
+		}
+		
+		h = new Hand(cards);
 	}
 	
 	public void testSampleHand() {
@@ -49,9 +57,15 @@ public class HandTest extends TestCase {
 	
 	public void testAddSwapCards() {
 		init();	
-		String extraCards = "HK D2 HA";	
+		String[] extraCards = {"HK", "D2", "HA"};
+		Card[] extras = new Card[3];
 		
-		h.addCards(extraCards);
+		for (int i = 0; i < extraCards.length; i++) {
+			Card card = new Card(extraCards[i]);
+			extras[i] = card;
+		}
+		
+		h.addCards(extras);
 		
 		assertNotNull(h.getExtraCards());
 	}

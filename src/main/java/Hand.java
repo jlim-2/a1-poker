@@ -41,22 +41,9 @@ public class Hand {
 		setHand();
 	}*/
 	
-	public Hand (String cards) {
-		this.cards = new Card[5];
+	public Hand (Card[] cards) {
+		this.cards = cards;
 		extraCards = new Card[3];
-		setHand(cards);
-	}
-	
-	public void setHand(String hand) {
-		for (int i = 0; i < cards.length; i++) {
-			String cardText = "";
-			cardText = hand.substring(0, 2);
-			
-			hand = hand.replace(cardText + " ", "");
-			
-			Card card = new Card(cardText);
-			cards[i] = card;
-		}
 	}
 	
 	public Card getCardAtIndex(int i) {		
@@ -91,16 +78,8 @@ public class Hand {
 		return extraCards;
 	}
 	
-	public void addCards(String cards) {
-		for (int i = 0; i < extraCards.length; i ++) {
-			String cardText = "";
-			cardText = cards.substring(0, 2);
-			
-			cards = cards.replace(cardText + " ", "");
-			
-			Card card = new Card(cardText);
-			extraCards[i] = card;
-		}
+	public void addCards(Card[] cards) {
+		
 	}
 	
 	public int getRank() {
@@ -118,6 +97,8 @@ public class Hand {
 		for (int i = 0; i < cards.length; i++) {
 			
 		}
+		
+		rank = 2;
 	}
 	
 	public void rankToString() {
