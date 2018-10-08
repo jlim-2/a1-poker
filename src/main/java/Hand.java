@@ -207,7 +207,15 @@ public class Hand {
 	
 	public Boolean isFullHouse() {
 		
-		return false;
+		Boolean caseA = cards[0].getRankInt() == cards[1].getRankInt() &&
+						cards[1].getRankInt() == cards[2].getRankInt() &&
+						cards[3].getRankInt() == cards[4].getRankInt();
+		
+		Boolean caseB = cards[0].getRankInt() == cards[1].getRankInt() &&
+						cards[2].getRankInt() == cards[3].getRankInt() &&
+						cards[3].getRankInt() == cards[4].getRankInt();
+		
+		return (caseA || caseB);
 	}
 	
 	public void rankToString() {
