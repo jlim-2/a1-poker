@@ -208,7 +208,7 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testSwapCards() {
-		init2();
+		init1();
 		
 		h.evalRank();
 		int prevRank = h.getRank();
@@ -217,6 +217,7 @@ public class HandTest extends TestCase {
 		}
 		
 		h.evalRank();
+		//could happen that the rank of the hand could be the same
 		assertTrue(h.getRank() > prevRank);
 	}
 }
