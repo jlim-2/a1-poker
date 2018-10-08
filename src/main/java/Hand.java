@@ -81,6 +81,15 @@ public class Hand {
 			return;
 		}
 		
+		if (isFourOfAKind()) {
+			rank = 8;
+		}
+		
+		if (isFullHouse()) {
+			rank = 7;
+			return;
+		}
+		
 		//check for flush
 		if (isFlush()) {
 			rank = 6;
@@ -93,6 +102,11 @@ public class Hand {
 			return;
 		}
 		
+		if (isSet()) {
+			rank = 4;
+			return;
+		}
+		
 		if (isTwoPair()) {
 			rank = 3;
 			return;
@@ -102,6 +116,8 @@ public class Hand {
 			rank = 2;
 			return;
 		}
+		
+		rank = 1;
 	}
 	
 
