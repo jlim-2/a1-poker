@@ -234,6 +234,17 @@ public class Hand {
 		return (caseA || caseB);
 	}
 	
+	public void swapCards() {
+		//if hand is straight or higher, AI does not exchange cards		
+		if (rank > 5) {
+			return;
+			
+		//if one card away from royal, straight flush, flush or straight
+		} else if () {
+			
+		}
+	}
+	
 	public void rankToString() {
 		switch (rank) {
 			case 1:	handRank = "High card";
