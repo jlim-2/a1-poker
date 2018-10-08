@@ -206,4 +206,17 @@ public class HandTest extends TestCase {
 		h.evalRank();
 		assertTrue(h.isFourOfAKind());
 	}
+	
+	public void testSwapCards() {
+		init2();
+		
+		h.evalRank();
+		int prevRank = h.getRank();
+		if (prevRank < 5) {
+			h.swapCards();
+		}
+		
+		h.evalRank();
+		assertTrue(h.getRank() > prevRank);
+	}
 }
