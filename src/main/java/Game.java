@@ -95,13 +95,17 @@ public class Game {
 				
 		System.out.println("\n");
 		
-		compHand.evalRank();
-		//compHand.rankToString();
-		
+		compHand.evalRank();		
 		
 		oppHand.evalRank();
 		oppHand.rankToString();
 		System.out.println("Opponent has: " + oppHand.getRankString());
+		
+		if (compHand.compareHand(oppHand)) {
+			System.out.println("AIPlayer is winner!");
+		} else {
+			System.out.println("Opponent is winner!");
+		}
 		
 	}
 	
