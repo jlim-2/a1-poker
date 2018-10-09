@@ -274,4 +274,26 @@ public class HandTest extends TestCase {
 		
 		assertTrue(h.compareHand(h2));
 	}
+	
+	public void testCompareFlush() {
+		Card c1 = new Card("HJ");
+		Card c2 = new Card("HA");
+		Card c3 = new Card("H2");
+		Card c4 = new Card("HQ");
+		Card c5 = new Card("H8");
+		Card c6 = new Card("S8");
+		Card c7 = new Card("S9");
+		Card c8 = new Card("S4");
+		Card c9 = new Card("SQ");
+		Card c10 = new Card("SK");
+		
+		Hand h1 = new Hand(c1, c2, c3, c4, c5);
+		Hand h2 = new Hand(c6, c7, c8, c9, c10);
+		
+		h1.sortHand();
+		h2.sortHand();
+		
+		assertTrue(h2.compareFlush(h1));
+		
+	}
 }
