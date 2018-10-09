@@ -72,6 +72,7 @@ public class Hand {
 		//check for straight flush
 		if (isStraight() && isFlush()) {
 			//check if royal flush
+			//if lead card is ace
 			if (cards[0].getRankInt() == 14) {
 				rank = 10;
 				return;
