@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 public class HandTest extends TestCase {
 	
 	Hand h;
+	Hand h2;
 	
 	public void init() {
 		ClassLoader loader = getClass().getClassLoader();
@@ -99,6 +100,36 @@ public class HandTest extends TestCase {
 		}
 		
 		h = new Hand(cards);
+	}
+	
+	public void init5() {
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testhand5.txt").getFile());
+		String text = "";
+		
+		
+		try (Scanner scanner = new Scanner(file)){
+			text = scanner.nextLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String[] hands = text.split("\\s+");
+		Card[] cards1 = new Card[5];
+		Card[] cards2 = new Card[5];
+		
+		for (int i = 0; i < 5; i++) {
+			Card card = new Card(hands[i]);
+			cards1[i] = card;
+		}
+		
+		for (int i = 5, j = 0; i < 10; i++, j++) {
+			Card card = new Card(hands[i]);
+			cards2[i] = card;
+		}
+		
+		h = new Hand(cards1);
+		h2 = new Hand(cards2);
 	}
 	
 	public void testSampleHand() {
@@ -210,6 +241,7 @@ public class HandTest extends TestCase {
 	public void testSwapCards() {
 		init();
 		
+		h.sortHand();
 		h.evalRank();
 		int prevRank = h.getRank();
 		if (prevRank < 5) {
@@ -222,6 +254,13 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testCompareHands() {
+		init5();
 		
+		h.sortHand();
+		h2.sortHand();
+		h.evalRank();
+		h2.evalRank();
+		
+		assertTrue(h.compareHand(h2));
 	}
 }
