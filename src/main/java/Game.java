@@ -101,8 +101,6 @@ public class Game {
 		oppHand.evalRank();
 		oppHand.rankToString();
 		System.out.println("Opponent has: " + oppHand.getRankString());
-		System.out.println("AI player rank: " + compHand.getRank());
-		System.out.println("Opponent rank: " + oppHand.getRank());
 		
 	}
 	
