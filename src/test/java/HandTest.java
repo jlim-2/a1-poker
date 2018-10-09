@@ -125,7 +125,7 @@ public class HandTest extends TestCase {
 		
 		for (int i = 5, j = 0; i < 10; i++, j++) {
 			Card card = new Card(hands[i]);
-			cards2[i] = card;
+			cards2[j] = card;
 		}
 		
 		h = new Hand(cards1);

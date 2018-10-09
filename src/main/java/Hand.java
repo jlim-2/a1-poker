@@ -249,6 +249,50 @@ public class Hand {
 		
 	}
 	
+	//
+	public Boolean compareHand(Hand hand) {
+		if(rank > hand.getRank()) {
+			return true;
+		}
+		
+		//hand ranks are the same meaning tie
+		if (rank == hand.getRank()) {
+			//compare royal flushes
+			//compare by suit
+			if (rank == 10 && hand.getRank() == 10) {
+				if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			//check straight flushes
+			//high card, then suit of the highest card
+			//highest card will be at the beginning
+			if (rank == 9 && hand.getRank() == 9) {
+				
+				//if rank are the same, check the suit
+				if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
+					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+						return true;
+					} else {
+						return false;
+					}
+				//if the rank of the hand is greater than the other hand.
+				} else if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			
+		}
+		
+		return false;
+	}
+	
 	public void rankToString() {
 		switch (rank) {
 			case 1:	handRank = "High card";
