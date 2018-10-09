@@ -67,7 +67,7 @@ public class Game {
 	public void run() {		
 		System.out.println("Dealing cards to AI first...");
 		System.out.println("\nAI Cards:");
-		compHand.sortHand();
+		
 		for (int i = 0; i < compHand.getCards().length; i++) {
 			System.out.print(compHand.getCardAtIndex(i));
 			
@@ -80,6 +80,7 @@ public class Game {
 		
 		System.out.println("Hand to beat:");
 		
+		compHand.sortHand();
 		oppHand.sortHand();
 		
 		for (int i = 0; i < oppHand.getCards().length; i++) {
