@@ -188,6 +188,15 @@ public class HandTest extends TestCase {
 		assertEquals("Straight flush", h.getStringRank());
 	}
 	
+	public void testIsStraightFlush() {
+		init();
+		
+		h.evalRank();
+		h.rankToString();
+		
+		assertEquals("Straight flush", h.getStringRank());
+	}
+	
 	public void testIsStraight() {
 		init();
 		h.evalRank();
