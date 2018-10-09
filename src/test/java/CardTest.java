@@ -12,8 +12,8 @@ public class CardTest extends TestCase{
 		assertEquals("S",  card.getSuitString());
 	}
 	
-	public void testCompareRank() {
-		//Comparing two cards, by rank.
+	public void testCompare() {
+		//Comparing two cards, by rank, then suit.
 		
 		Card card1 = new Card("DK");
 		Card card2 = new Card("H10");
@@ -59,5 +59,28 @@ public class CardTest extends TestCase{
 		Card card = new Card("H9");
 		
 		assertEquals("H", card.getSuitString());
+	}
+	
+	public void testSuitRanks() {
+		Card c1 = new Card("H9");
+		Card c2 = new Card("S9");
+		Card c3 = new Card("D9");
+		Card c4 = new Card("C9");
+		
+		assertTrue(c1.compareCard(c3));
+		assertTrue(c1.compareCard(c4));
+		assertFalse(c1.compareCard(c2));
+		
+		assertTrue(c2.compareCard(c1));
+		assertTrue(c2.compareCard(c3));
+		assertTrue(c2.compareCard(c4));
+		
+		assertFalse(c3.compareCard(c1));
+		assertFalse(c3.compareCard(c2));
+		assertFalse(c3.compareCard(c4));
+		
+		assertFalse(c4.compareCard(c1));
+		assertFalse(c4.compareCard(c2));
+		assert(c4.compareCard(c3));
 	}
 }

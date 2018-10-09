@@ -37,6 +37,6 @@ public class GameTest extends TestCase{
 		g.getAIHand().evalRank();
 		g.getOppHand().evalRank();
 		
-		assertTrue(g.getAIHand().getRank() > g.getOppHand().getRank());
+		assertTrue(g.getAIHand().getRank() < g.getOppHand().getRank());
 	}
 }

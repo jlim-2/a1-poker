@@ -241,15 +241,12 @@ public class Hand {
 	
 	public void swapCards() {
 		//if hand is straight or higher, AI does not exchange cards		
-		if (rank > 5) {
-			return;
-			
-		}
-		
+				
 		
 	}
 	
-	//
+	//compare hand, input Hand object to compare
+	//returns if the hand given is lower (true) or else false
 	public Boolean compareHand(Hand hand) {
 		if(rank > hand.getRank()) {
 			return true;
@@ -287,7 +284,80 @@ public class Hand {
 				}
 			}
 			
+			//check four of a kind
+			//since hand will be sorted
+			//a card that is part of the quadruple, will be directly in the middle
+			if (rank == 8 && hand.getRank() == 8) {
+				//if the rank is greater than the hand being compared
+				if (getCardAtIndex(2).getRankInt() > hand.getCardAtIndex(2).getRankInt()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
 			
+			//check full house or a set(three of a kind)
+			//higher rank card wins the hand
+			//since hand sorted by rank
+			//for full house can be ("xxxaa") or ("aaxxx")
+			//for a set can be ("abxxx") or ("xxxab") or ("axxxb")
+			//card that will be included with all the triplets is right in the middle position
+			if ((rank == 7 && hand.getRank() == 7) || (rank == 4 && hand.getRank() == 4)) {
+				if (getCardAtIndex(2).getRankInt() > hand.getCardAtIndex(2).getRankInt()) {
+					return true;
+				} else {
+					return false;
+				}	
+			}
+			
+			//check for flush
+			//highest ranked card
+			
+			//check straights
+			//higher rank card wins
+			//highest card found at first in sorted hand
+			//if same rank, then suit of the first (highest) card
+			if (rank == 5 && hand.getRank() == 5) {
+				//check highest rank
+				if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+					return true;
+				} else if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
+					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			}
+			
+			//check pair
+			//rank of pair
+			//position of pair can be ("xxabc")
+			//           			  ("axxbc")
+			//                        ("abxxc")
+			//                        ("abcxx")
+			if (rank == 2 && hand.getRank() == 2) {
+				
+			}
+			
+			//check high card
+			//rank of highest card, then suit if the same
+			if (rank == 1 && hand.getRank() == 1) {
+				//check rank of card
+				if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
+					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+						return true;
+					} else {
+						return false;
+					}
+				} else if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+					return true;
+				} else {
+					return false;
+				}
+			}
 		}
 		
 		return false;
