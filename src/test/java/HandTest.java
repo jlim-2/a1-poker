@@ -208,7 +208,7 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testSwapCards() {
-		init1();
+		init();
 		
 		h.evalRank();
 		int prevRank = h.getRank();

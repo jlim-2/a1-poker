@@ -118,32 +118,6 @@ public class Game {
 		}
 	}
 	
-	//This function is called after the AI player has swapped cards
-	public boolean isCompWinner() {
-		//When AIPlayer's hand rank is higher than the opponent
-		if (compHand.getRank() > oppHand.getRank()) {
-			return true;
-			
-		//When the two hand ranks are tied;
-		} else if (compHand.getRank() == oppHand.getRank()) {
-			//check flushes by suit
-			//since the hands have the same suit
-			//can check any card, picked the first card
-			if (compHand.getCardAtIndex(0).getSuitInt() > oppHand.getCardAtIndex(0).getSuitInt()) {
-				return true;
-			}
-			
-			//check straight by highest card
-			//highest card will be the first card in the sorted hand
-			if (compHand.getCardAtIndex(0).getRankInt() > oppHand.getCardAtIndex(0).getRankInt()) {
-				return true;
-			}
-		}
-		
-		//When the opponent hand is better
-		return false;
-	}
-	
 	public Hand getAIHand() {
 		return compHand;
 	}

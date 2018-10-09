@@ -120,7 +120,12 @@ public class Hand {
 		rank = 1;
 	}
 	
-
+	/*
+	 * The following functions check if the hand is a specific poker hand
+	 * that is not a high card
+	 * These methods will not work without the sortHand() method being called
+	 * beforehand to sort the hand from greatest rank to lowest rank
+	 */
 	public Boolean isFlush() {		
 		for (int i = 0, count = 0; i < cards.length - 1; i++) {
 			if (cards[i].getSuitInt() == cards[i + 1].getSuitInt()) {
@@ -239,10 +244,9 @@ public class Hand {
 		if (rank > 5) {
 			return;
 			
-		//if one card away from royal, straight flush, flush or straight
-		} else if () {
-			
 		}
+		
+		
 	}
 	
 	public void rankToString() {
