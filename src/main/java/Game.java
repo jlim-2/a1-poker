@@ -99,23 +99,11 @@ public class Game {
 		
 		
 		oppHand.evalRank();
-		System.out.println("Opponent has: " + oppHand.getStringRank());
+		oppHand.rankToString();
+		System.out.println("Opponent has: " + oppHand.getRankString());
 		System.out.println("AI player rank: " + compHand.getRank());
 		System.out.println("Opponent rank: " + oppHand.getRank());
 		
-		if (compHand.getRank() < 5) {
-			/*compHand.swapCards();
-			
-			System.out.println("Cards swapped: ");
-			compHand.evalRank();
-			 */
-		}
-		
-		if (isCompWinner()) {
-			System.out.println("AI Player won!");
-		} else {
-			System.out.println("Opponent won!");
-		}
 	}
 	
 	public Hand getAIHand() {

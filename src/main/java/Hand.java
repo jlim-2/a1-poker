@@ -284,4 +284,8 @@ public class Hand {
 			default:handRank = "Invalid";
 		}
 	}
+	
+	public String getRankString() {
+		return handRank;
+	}
 }

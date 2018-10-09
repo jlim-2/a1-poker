@@ -220,4 +220,8 @@ public class HandTest extends TestCase {
 		//could happen that the rank of the hand could be the same
 		assertTrue(h.getRank() > prevRank);
 	}
+	
+	public void testCompareHands() {
+		
+	}
 }
