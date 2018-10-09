@@ -293,7 +293,7 @@ public class HandTest extends TestCase {
 		h1.sortHand();
 		h2.sortHand();
 		
-		assertTrue(h2.compareFlush(h1));
+		assertTrue(h2.compareFlushes(h1));
 		
 	}
 }

@@ -320,8 +320,10 @@ public class Hand {
 				}	
 			}
 			
-			//check for flush
-			//highest ranked card
+			//check flushes
+			if (compareFlushes(hand, 0)) {
+				return true;
+			}
 			
 			//check straights
 			//higher rank card wins
@@ -371,6 +373,17 @@ public class Hand {
 		}
 		
 		return false;
+	}
+	
+	public Boolean compareFlushes(Hand hand, int index) {
+		int i = index;
+		if (this.cards[i].getRankInt() == hand.getCardAtIndex(i).getRankInt()) {
+			return compareFlushes(hand, i + 1);
+		} else {
+			
+		}
+		
+		return true;
 	}
 	
 	public void rankToString() {
