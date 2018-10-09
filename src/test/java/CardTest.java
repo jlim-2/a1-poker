@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import junit.framework.TestCase;
 
 public class CardTest extends TestCase{
@@ -81,6 +85,29 @@ public class CardTest extends TestCase{
 		
 		assertFalse(c4.compareCard(c1));
 		assertFalse(c4.compareCard(c2));
-		assert(c4.compareCard(c3));
+		assertTrue(c4.compareCard(c3));
+	}
+	
+	public void testCardRanks() {
+		ClassLoader loader = getClass().getClassLoader();
+		File file = new File(loader.getResource("testsuits.txt").getFile());
+		String text = "";
+		try (Scanner scanner = new Scanner(file)) {
+			text = scanner.nextLine();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String[] cards = text.split("\\s+");
+		Card[] suit = new Card[13];
+		
+		for (int i = 0; i < cards.length; i++) {
+			Card card = new Card(cards[i]);
+			suit[i] = card;
+		}
+		
+		for (int i = 0; i < suit.length - 1; i++) {
+			assertTrue(suit[i].compareCard(suit[i + 1]));
+		}
 	}
 }
