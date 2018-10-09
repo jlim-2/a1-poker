@@ -95,7 +95,11 @@ public class Game {
 				
 		System.out.println("\n");
 		
-		compHand.evalRank();		
+		compHand.evalRank();
+		
+		if (compHand.doesSwapCards()) {
+			compHand.swapCards();
+		}
 		
 		oppHand.evalRank();
 		oppHand.rankToString();

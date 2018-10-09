@@ -240,6 +240,15 @@ public class Hand {
 		return (caseA || caseB);
 	}
 	
+	//helper method to determine if swapping cards
+	public Boolean doesSwapCards() {
+		if (rank > 5) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public void swapCards() {
 		//if hand is straight or higher, AI does not exchange cards		
 				

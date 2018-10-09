@@ -30,13 +30,13 @@ public class GameTest extends TestCase{
 	}
 	
 	public void testWinner() {
-		Game g = new Game();
+		Game g1 = new Game();
 		
-		g.run();
+		g1.run();
 		
-		g.getAIHand().evalRank();
-		g.getOppHand().evalRank();
+		g1.getAIHand().evalRank();
+		g1.getOppHand().evalRank();
 		
-		assertTrue(g.getAIHand().getRank() < g.getOppHand().getRank());
+		assertTrue(g1.getAIHand().getRank() < g1.getOppHand().getRank());
 	}
 }
