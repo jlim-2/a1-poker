@@ -478,19 +478,14 @@ public class Hand {
 	}
 	
 	public void detectHand() {
-		//check if pair
-		//determine how many cards to swap
-		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
-			ArrayList<Card> pair = new ArrayList<Card>();
-			if (cards.get(i) == cards.get(i + 1)) {
-				count++;
-			}
+		
+	}
+	
+	public Boolean oneAwayFromRoyalFlush() {
+		for (int i = 0; i < cards.size(); i++) {
 			
-			if (count == 1) {
-				pair.add(cards.get(i));
-				pair.add(cards.get(i + 1));
-			}
 		}
 		
+		return false;
 	}
 }
