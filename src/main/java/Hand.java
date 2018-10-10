@@ -1,60 +1,53 @@
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Hand {
-	private Card[] cards;
-	private Card[] extraCards;
+	private ArrayList<Card> cards;
+	private ArrayList<Card> extraCards;
 	private int rank;
 	private String handRank;
-	private int numCardsToSwap;
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
-		cards = new Card[5];
-		extraCards = new Card[3];
+		cards = new ArrayList<Card>();
+		extraCards = new ArrayList<Card>();
 		
-		cards[0] = c1;
-		cards[1] = c2;
-		cards[2] = c3;
-		cards[3] = c4;
-		cards[4] = c5;
+		cards.add(c1);
+		cards.add(c2);
+		cards.add(c3);
+		cards.add(c4);
+		cards.add(c5);
 	}
 	
-	public Hand (Card[] cards) {
+	public Hand (ArrayList<Card> cards) {
 		this.cards = cards;
-		extraCards = new Card[3];
+		extraCards = new ArrayList<Card>();
 	}
 	
-	public Card getCardAtIndex(int i) {		
-		if (i > cards.length) {
-			return null;
-		} else {
-			return cards[i];
-		}
-	}
-	
-	public Card[] getCards() {
+	public ArrayList<Card> getCards() {
 		return cards;
 	}
 	
 	public void sortHand() {
-		for (int i = 0; i < cards.length - 1; i++) {
+		for (int i = 0; i < cards.size() - 1; i++) {
 			int min = i;
 			
-			for (int j = i + 1; j < cards.length; j++) {
-				if (cards[j].compareCard(cards[min])) {
+			for (int j = i + 1; j < cards.size(); j++) {
+				if (cards.get(j).compareCard(cards.get(min))) {
 					min = j;
 				}
 			}
 			
-			Card temp = cards[min];
-			cards[min] = cards[i];
-			cards[i] = temp;
+			Card temp = cards.get(min);
+			cards.set(min,  cards.get(i));
+			cards.set(i, temp);
 		}
 	}
 	
-	public Card[] getExtraCards() {
+	public ArrayList<Card> getExtraCards() {
 		return extraCards;
 	}
 	
-	public void addCards(Card[] cards) {
+	public void addCards(ArrayList<Card> cards) {
 		extraCards = cards;
 	}
 	
@@ -74,7 +67,7 @@ public class Hand {
 		if (isStraight() && isFlush()) {
 			//check if royal flush
 			//if lead card is ace
-			if (cards[0].getRankInt() == 14) {
+			if (cards.get(0).getRankInt() == 14) {
 				rank = 10;
 				return;
 			}
@@ -129,8 +122,8 @@ public class Hand {
 	 * beforehand to sort the hand from greatest rank to lowest rank
 	 */
 	public Boolean isFlush() {		
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getSuitInt() == cards[i + 1].getSuitInt()) {
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getSuitInt() == cards.get(i + 1).getSuitInt()) {
 				count++;
 			}
 			
@@ -146,24 +139,24 @@ public class Hand {
 		//check if ace is in the hand
 		//since hand is sorted from highest rank to lowest,
 		//if ace is in the hand, it will the be first card
-		if (cards[0].getRankInt() == 14) {
+		if (cards.get(0).getRankInt() == 14) {
 			//ace is low (A2345)
-			Boolean caseA = cards[1].getRankInt() == 5 &&
-							cards[2].getRankInt() == 4 &&
-							cards[3].getRankInt() == 3 &&
-							cards[4].getRankInt() == 2;
+			Boolean caseA = cards.get(1).getRankInt() == 5 &&
+							cards.get(2).getRankInt() == 4 &&
+							cards.get(3).getRankInt() == 3 &&
+							cards.get(4).getRankInt() == 2;
 			
 			//ace is high (AKQJ10)
-			Boolean caseB = cards[1].getRankInt() == 13 &&
-							cards[2].getRankInt() == 12 &&
-							cards[3].getRankInt() == 11 &&
-							cards[4].getRankInt() == 10;
+			Boolean caseB = cards.get(1).getRankInt() == 13 &&
+							cards.get(2).getRankInt() == 12 &&
+							cards.get(3).getRankInt() == 11 &&
+							cards.get(4).getRankInt() == 10;
 			
 			return (caseA || caseB);
 		}
 		
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() - cards[i + 1].getRankInt() == 1) {
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getRankInt() - cards.get(i + 1).getRankInt() == 1) {
 				count++;
 			}
 			
@@ -177,8 +170,8 @@ public class Hand {
 	}
 	
 	public Boolean isPair() {
-		for (int i = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+		for (int i = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getRankInt() == cards.get(i + 1).getRankInt()) {
 				return true;
 			}
 		}
@@ -187,8 +180,8 @@ public class Hand {
 	}
 	
 	public Boolean isTwoPair() {
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getRankInt() == cards.get(i + 1).getRankInt()) {
 				count++;
 			}
 			
@@ -201,8 +194,8 @@ public class Hand {
 	}
 	
 	public Boolean isSet() {
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getRankInt() == cards.get(i + 1).getRankInt()) {
 				count++;
 			}
 			
@@ -215,8 +208,8 @@ public class Hand {
 	}
 	
 	public Boolean isFourOfAKind() {
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getRankInt() == cards.get(i + 1).getRankInt()) {
 				count++;
 			}
 			
@@ -230,13 +223,13 @@ public class Hand {
 	
 	public Boolean isFullHouse() {
 		
-		Boolean caseA = cards[0].getRankInt() == cards[1].getRankInt() &&
-						cards[1].getRankInt() == cards[2].getRankInt() &&
-						cards[3].getRankInt() == cards[4].getRankInt();
+		Boolean caseA = cards.get(0).getRankInt() == cards.get(1).getRankInt() &&
+						cards.get(1).getRankInt() == cards.get(2).getRankInt() &&
+						cards.get(3).getRankInt() == cards.get(4).getRankInt();
 		
-		Boolean caseB = cards[0].getRankInt() == cards[1].getRankInt() &&
-						cards[2].getRankInt() == cards[3].getRankInt() &&
-						cards[3].getRankInt() == cards[4].getRankInt();
+		Boolean caseB = cards.get(0).getRankInt() == cards.get(1).getRankInt() &&
+						cards.get(2).getRankInt() == cards.get(3).getRankInt() &&
+						cards.get(3).getRankInt() == cards.get(4).getRankInt();
 		
 		return (caseA || caseB);
 	}
@@ -250,9 +243,17 @@ public class Hand {
 		return true;
 	}
 	
-	public void swapCards() {
-		//if hand is straight or higher, AI does not exchange cards		
-				
+	public void swapCards(int numCards) {
+		Random rand = new Random();
+		ArrayList<Card> swapped = new ArrayList<Card>();
+		for (int i = 0; i < numCards; i++) {
+			Card card = extraCards.get(rand.nextInt(extraCards.size()));
+			extraCards.remove(card);
+			
+			System.out.println(card.toString());
+			swapped.add(card);
+		}
+		
 		
 	}
 	
@@ -268,7 +269,7 @@ public class Hand {
 			//compare royal flushes
 			//compare by suit
 			if (rank == 10 && hand.getRank() == 10) {
-				if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+				if (this.cards.get(0).getSuitInt() > hand.getCards().get(0).getSuitInt()) {
 					return true;
 				} else {
 					return false;
@@ -281,14 +282,14 @@ public class Hand {
 			if (rank == 9 && hand.getRank() == 9) {
 				
 				//if rank are the same, check the suit
-				if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
-					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+				if (this.cards.get(0).getRankInt() == hand.getCards().get(0).getRankInt()) {
+					if (this.cards.get(0).getSuitInt() > hand.getCards().get(0).getSuitInt()) {
 						return true;
 					} else {
 						return false;
 					}
 				//if the rank of the hand is greater than the other hand.
-				} else if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+				} else if (this.cards.get(0).getRankInt() > hand.getCards().get(0).getRankInt()) {
 					return true;
 				} else {
 					return false;
@@ -300,7 +301,7 @@ public class Hand {
 			//a card that is part of the quadruple, will be directly in the middle
 			if (rank == 8 && hand.getRank() == 8) {
 				//if the rank is greater than the hand being compared
-				if (getCardAtIndex(2).getRankInt() > hand.getCardAtIndex(2).getRankInt()) {
+				if (this.getCards().get(2).getRankInt() > hand.getCards().get(2).getRankInt()) {
 					return true;
 				} else {
 					return false;
@@ -314,7 +315,7 @@ public class Hand {
 			//for a set can be ("abxxx") or ("xxxab") or ("axxxb")
 			//card that will be included with all the triplets is right in the middle position
 			if ((rank == 7 && hand.getRank() == 7) || (rank == 4 && hand.getRank() == 4)) {
-				if (getCardAtIndex(2).getRankInt() > hand.getCardAtIndex(2).getRankInt()) {
+				if (this.cards.get(2).getRankInt() > hand.getCards().get(2).getRankInt()) {
 					return true;
 				} else {
 					return false;
@@ -332,16 +333,44 @@ public class Hand {
 			//if same rank, then suit of the first (highest) card
 			if (rank == 5 && hand.getRank() == 5) {
 				//check highest rank
-				if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+				if (this.cards.get(0).getRankInt() > hand.getCards().get(0).getRankInt()) {
 					return true;
-				} else if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
-					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+				} else if (this.cards.get(0).getRankInt() == hand.getCards().get(0).getRankInt()) {
+					if (this.cards.get(0).getSuitInt() > hand.getCards().get(0).getSuitInt()) {
 						return true;
 					} else {
 						return false;
 					}
 				} else {
 					return false;
+				}
+			}
+			
+			//check two pair
+			//highest rank of the two pairs wins
+			//if same rank, then suit
+			//two pair "aabbc", "abbcc", "aabcc"
+			if (rank == 3 && hand.getRank() == 3) {
+				ArrayList<Card> pair = new ArrayList<Card>();
+				ArrayList<Card> compPair = new ArrayList<Card>();
+				for (int i = 0; i < cards.size() - 1; i++) {
+					if (cards.get(i) == cards.get(i + 1)) {
+						pair.add(cards.get(i));
+						pair.add(cards.get(i + 1));
+					}
+					
+					if (hand.getCards().get(i) == hand.getCards().get(i + 1)) {
+						compPair.add(cards.get(i));
+						compPair.add(cards.get(i + 1));
+					}
+				}
+				
+				if (pair.get(0).getRankInt() > compPair.get(0).getRankInt()) {
+					return true;
+				} else if (pair.get(0).getRankInt() == compPair.get(0).getRankInt()) {
+					if (pair.get(0).getSuitInt() > compPair.get(0).getSuitInt()) {
+						return true;
+					}
 				}
 			}
 			
@@ -352,20 +381,40 @@ public class Hand {
 			//                        ("abxxc")
 			//                        ("abcxx")
 			if (rank == 2 && hand.getRank() == 2) {
+				ArrayList<Card> pair = new ArrayList<Card>();
+				ArrayList<Card> compPair = new ArrayList<Card>();
+				for (int i = 0; i < cards.size() - 1; i++) {
+					if (cards.get(i) == cards.get(i + 1)) {
+						pair.add(cards.get(i));
+						pair.add(cards.get(i + 1));
+					}
+					
+					if (hand.getCards().get(i) == hand.getCards().get(i + 1)) {
+						compPair.add(hand.getCards().get(i));
+						compPair.add(hand.getCards().get(i + 1));
+					}
+				}
 				
+				if (pair.get(0).getRankInt() > compPair.get(0).getRankInt()) {
+					return true;
+				} else if (pair.get(0).getRankInt() == compPair.get(0).getRankInt()) {
+					if (pair.get(0).getSuitInt() > compPair.get(0).getSuitInt()) {
+						return true;
+					}
+				}
 			}
 			
 			//check high card
 			//rank of highest card, then suit if the same
 			if (rank == 1 && hand.getRank() == 1) {
 				//check rank of card
-				if (getCardAtIndex(0).getRankInt() == hand.getCardAtIndex(0).getRankInt()) {
-					if (getCardAtIndex(0).getSuitInt() > hand.getCardAtIndex(0).getSuitInt()) {
+				if (cards.get(0).getRankInt() == hand.getCards().get(0).getRankInt()) {
+					if (this.cards.get(0).getSuitInt() > hand.getCards().get(0).getSuitInt()) {
 						return true;
 					} else {
 						return false;
 					}
-				} else if (getCardAtIndex(0).getRankInt() > hand.getCardAtIndex(0).getRankInt()) {
+				} else if (this.cards.get(0).getRankInt() > hand.getCards().get(0).getRankInt()) {
 					return true;
 				} else {
 					return false;
@@ -377,11 +426,11 @@ public class Hand {
 	}
 	
 	public Boolean compareFlushes(Hand hand, int index) {
-		if (this.cards[index].getRankInt() == hand.getCardAtIndex(index).getRankInt() && index < 4) {
+		if (this.cards.get(index).getRankInt() == hand.getCards().get(index).getRankInt() && index < 4) {
 			return compareFlushes(hand, index + 1);
 		}
 		
-		if (this.cards[index].getSuitInt() > hand.getCardAtIndex(index).getSuitInt()) {
+		if (this.cards.get(index).getSuitInt() > hand.getCards().get(index).getSuitInt()) {
 			return true;
 		}
 		
@@ -429,53 +478,19 @@ public class Hand {
 	}
 	
 	public void detectHand() {
-		//if 3 cards are in sequence
-		//cards will be sorted from largest to smallest
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if ((cards[i].getRankInt() - cards[i + 1].getRankInt()) == 1) {
+		//check if pair
+		//determine how many cards to swap
+		for (int i = 0, count = 0; i < cards.size() - 1; i++) {
+			ArrayList<Card> pair = new ArrayList<Card>();
+			if (cards.get(i) == cards.get(i + 1)) {
 				count++;
 			}
 			
-			if (count == 2) {
-				numCardsToSwap = 2;
+			if (count == 1) {
+				pair.add(cards.get(i));
+				pair.add(cards.get(i + 1));
 			}
 		}
-		
-		//check for 3 cards of the same suit
-		//cards will be sorted from largest rank to smallest
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getSuitInt() == cards[i + 1].getSuitInt()) {
-				count++;
-			}
-			
-			if (count == 2) {
-				numCardsToSwap = 2;
-			}
-		}
-		
-		//check for 3 cards of the same rank
-		//cards sorted from largest to smallest
-		for (int i = 0, count = 0; i < cards.length - 1; i++) {
-			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
-				count++;
-			}
-			
-			if (count == 2) {
-				numCardsToSwap = 2;
-			}
-		}
-		
-		//check if there is a pair in the hand
-		if (isPair()) {
-			numCardsToSwap = 3;
-		}
-		
-		//check if there is two pairs in the hand
-		if (isTwoPair()) {
-			numCardsToSwap = 1;
-		}
-		
-		//check if close to flush
 		
 	}
 }

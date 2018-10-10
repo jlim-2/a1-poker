@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import junit.framework.TestCase;
@@ -22,11 +23,11 @@ public class HandTest extends TestCase {
 		}
 		
 		String[] hands = text.split("\\s+");
-		Card[] cards = new Card[5];
+		ArrayList<Card> cards = new ArrayList<Card>();
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			cards[i] = card;
+			cards.add(card);
 		}
 		
 		h = new Hand(cards);
@@ -45,11 +46,11 @@ public class HandTest extends TestCase {
 		}
 		
 		String[] hands = text.split("\\s+");
-		Card[] cards = new Card[5];
+		ArrayList<Card> cards = new ArrayList<Card>();
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			cards[i] = card;
+			cards.add(card);
 		}
 		
 		h = new Hand(cards);
@@ -69,11 +70,11 @@ public class HandTest extends TestCase {
 		}
 		
 		String[] hands = text.split("\\s+");
-		Card[] cards = new Card[5];
+		ArrayList<Card> cards = new ArrayList<Card>();
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			cards[i] = card;
+			cards.add(card);
 		}
 		
 		h = new Hand(cards);		
@@ -92,11 +93,11 @@ public class HandTest extends TestCase {
 		}
 		
 		String[] hands = text.split("\\s+");
-		Card[] cards = new Card[5];
+		ArrayList<Card> cards = new ArrayList<Card>();
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			cards[i] = card;
+			cards.add(card);
 		}
 		
 		h = new Hand(cards);
@@ -115,17 +116,17 @@ public class HandTest extends TestCase {
 		}
 		
 		String[] hands = text.split("\\s+");
-		Card[] cards1 = new Card[5];
-		Card[] cards2 = new Card[5];
+		ArrayList<Card> cards1 = new ArrayList<Card>();
+		ArrayList<Card> cards2 = new ArrayList<Card>();
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			cards1[i] = card;
+			cards1.add(card);
 		}
 		
-		for (int i = 5, j = 0; i < 10; i++, j++) {
+		for (int i = 5; i < 10; i++) {
 			Card card = new Card(hands[i]);
-			cards2[j] = card;
+			cards2.add(card);
 		}
 		
 		h = new Hand(cards1);
@@ -138,20 +139,14 @@ public class HandTest extends TestCase {
 		assertNotNull(h);
 	}
 	
-	public void testGetCardAtIndex() {
-		init();
-		
-		assertEquals("Queen of Spades", h.getCardAtIndex(1).toString());
-	}
-	
 	public void testSortHand() {
 		init();
 		
 		h.sortHand();
  		
- 		for (int i = 0; i < h.getCards().length; i++) {
- 			if ((i + 1) != h.getCards().length) {
- 				assertTrue(h.getCardAtIndex(i).compareCard(h.getCardAtIndex(i + 1)));
+ 		for (int i = 0; i < h.getCards().size() - 1; i++) {
+ 			if ((i + 1) != h.getCards().size()) {
+ 				assertTrue(h.getCards().get(i).compareCard(h.getCards().get(i + 1)));
  			}
  		}
 	}
@@ -159,11 +154,11 @@ public class HandTest extends TestCase {
 	public void testAddSwapCards() {
 		init();	
 		String[] extraCards = {"HK", "D2", "HA"};
-		Card[] extras = new Card[3];
+		ArrayList<Card> extras = new ArrayList<Card>();
 		
 		for (int i = 0; i < extraCards.length; i++) {
 			Card card = new Card(extraCards[i]);
-			extras[i] = card;
+			extras.add(card);
 		}
 		
 		h.addCards(extras);
@@ -250,11 +245,22 @@ public class HandTest extends TestCase {
 	}
 	
 	public void testSwapCards() {
-		init();
+		init2();
 		
 		Hand prevHand = h;
 		
+		String[] swapCards = {"HK", "D8", "D6"};
+		ArrayList<Card> extras = new ArrayList<Card>();
+		
+		for (int i = 0; i < swapCards.length; i++) {
+			Card card = new Card(swapCards[i]);
+			extras.add(card);
+		}
+		
+		h.addCards(extras);
+		
 		h.swapCards(2);
+		
 		
 	}
 	

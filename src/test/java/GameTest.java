@@ -24,8 +24,8 @@ public class GameTest extends TestCase{
 		
 		g.newGame();
 		
-		for (int i = 0; i < prevHand.getCards().length; i++) {
-			assertNotEquals(prevHand.getCardAtIndex(i), g.getAIHand());
+		for (int i = 0; i < prevHand.getCards().size(); i++) {
+			assertNotEquals(prevHand.getCards().get(i), g.getAIHand());
 		}
 	}
 	

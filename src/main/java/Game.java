@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -10,9 +11,9 @@ public class Game {
 	private File file;
 	private Scanner scanner;
 	private String[] hands;
-	private Card[] compCards;
-	private Card[] oppCards;
-	private Card[] swapCards;
+	private ArrayList<Card> compCards;
+	private ArrayList<Card> oppCards;
+	private ArrayList<Card> swapCards;
 	
 	public Game(){
 		welcomeMessage = "Welcome to Poker!";
@@ -25,9 +26,9 @@ public class Game {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		compCards = new Card[5];
-		oppCards = new Card[5];
-		swapCards = new Card[3];
+		compCards = new ArrayList<Card>();
+		oppCards = new ArrayList<Card>();
+		swapCards = new ArrayList<Card>();
 		
 		newGame();
 		
@@ -45,22 +46,22 @@ public class Game {
 		
 		for (int i = 0; i < 5; i++) {
 			Card card = new Card(hands[i]);
-			compCards[i] = card;
+			compCards.add(card);
 		}
 		
 		compHand = new Hand(compCards);
 		
 		
-		for (int i = 5, j = 0; i < 10; i++, j++) {
+		for (int i = 5; i < 10; i++) {
 			Card card = new Card(hands[i]);
-			oppCards[j] = card;
+			oppCards.add(card);
 		}
 		
 		oppHand = new Hand(oppCards);
 		
-		for (int i = 10, j = 0; i < 13; i++, j++) {
+		for (int i = 10; i < 13; i++) {
 			Card card = new Card(hands[i]);
-			swapCards[j] = card;
+			swapCards.add(card);
 		}
 	}
 	
@@ -68,8 +69,8 @@ public class Game {
 		System.out.println("Dealing cards to AI first...");
 		System.out.println("\nAI Cards:");
 		compHand.sortHand();
-		for (int i = 0; i < compHand.getCards().length; i++) {
-			System.out.print(compHand.getCardAtIndex(i));
+		for (int i = 0; i < compHand.getCards().size(); i++) {
+			System.out.print(compHand.getCards().get(i));
 			
 			if (i != 4) {
 				System.out.print(", ");
@@ -83,8 +84,8 @@ public class Game {
 		
 		oppHand.sortHand();
 		
-		for (int i = 0; i < oppHand.getCards().length; i++) {
-			System.out.print(oppHand.getCardAtIndex(i));
+		for (int i = 0; i < oppHand.getCards().size(); i++) {
+			System.out.print(oppHand.getCards().get(i));
 			
 			if (i != 4) {
 				System.out.print(", ");
@@ -98,7 +99,7 @@ public class Game {
 		compHand.evalRank();
 		
 		if (compHand.doesSwapCards()) {
-			compHand.swapCards();
+			//compHand.swapCards();
 		}
 		
 		oppHand.evalRank();
