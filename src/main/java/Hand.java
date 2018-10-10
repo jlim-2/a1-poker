@@ -6,6 +6,7 @@ public class Hand {
 	private ArrayList<Card> extraCards;
 	private int rank;
 	private String handRank;
+	private int numCardsToSwap;
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new ArrayList<Card>();
@@ -250,7 +251,7 @@ public class Hand {
 			Card card = extraCards.get(rand.nextInt(extraCards.size()));
 			extraCards.remove(card);
 			
-			System.out.println(card.toString());
+			System.out.println(cards.get(i).toString());
 			swapped.add(card);
 		}
 		
@@ -430,6 +431,10 @@ public class Hand {
 			return compareFlushes(hand, index + 1);
 		}
 		
+		if (this.cards.get(index).getRankInt() > hand.getCards().get(index).getRankInt()) {
+			return true;
+		}
+		
 		if (this.cards.get(index).getSuitInt() > hand.getCards().get(index).getSuitInt()) {
 			return true;
 		}
@@ -478,14 +483,31 @@ public class Hand {
 	}
 	
 	public void detectHand() {
+		if (isTwoPair()) {
+			numCardsToSwap = 1;
+			swapCards(numCardsToSwap);
+		}
+		
+		if (isPair()) {
+			numCardsToSwap = 3;
+			swapCards(numCardsToSwap);
+		}
+		
+		if (rank == 1) {
+			numCardsToSwap = 3;
+			swapCards(numCardsToSwap);
+		}
 		
 	}
 	
 	public Boolean oneAwayFromRoyalFlush() {
-		for (int i = 0; i < cards.size(); i++) {
+		sortHand();
+		for (int i = 0; i < cards.size()) {
 			
 		}
 		
 		return false;
 	}
+	
+	
 }

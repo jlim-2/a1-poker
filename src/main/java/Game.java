@@ -69,7 +69,7 @@ public class Game {
 		System.out.println("Dealing cards to AI first...");
 		System.out.println("\nAI Cards:");
 		compHand.sortHand();
-		for (int i = 0; i < compHand.getCards().size(); i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.print(compHand.getCards().get(i));
 			
 			if (i != 4) {
@@ -84,7 +84,7 @@ public class Game {
 		
 		oppHand.sortHand();
 		
-		for (int i = 0; i < oppHand.getCards().size(); i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.print(oppHand.getCards().get(i));
 			
 			if (i != 4) {
@@ -103,8 +103,14 @@ public class Game {
 		}
 		
 		oppHand.evalRank();
+		compHand.rankToString();
 		oppHand.rankToString();
+		System.out.println("AIPlayer has: " + compHand.getRankString());
 		System.out.println("Opponent has: " + oppHand.getRankString());
+		
+		if (compHand.getRank() < 5) {
+			//compHand.detectHand();
+		}
 		
 		if (compHand.compareHand(oppHand)) {
 			System.out.println("AIPlayer is winner!");
@@ -112,6 +118,8 @@ public class Game {
 			System.out.println("Opponent is winner!");
 		}
 		
+		compHand.getCards().removeAll(compCards);
+		oppHand.getCards().removeAll(oppCards);
 	}
 	
 	public Hand getAIHand() {

@@ -294,16 +294,4 @@ public class HandTest extends TestCase {
 		assertTrue(h2.compareFlushes(h1, 0));
 		
 	}
-	
-	//test the detection if the hand is close to making something
-	public void testDetectHands() {
-		Card c1 = new Card("HJ");
-		Card c2 = new Card("HA");
-		Card c3 = new Card("H2");
-		Card c4 = new Card("HQ");
-		Card c5 = new Card("SK");
-		
-		Hand h = new Hand(c1, c2, c3, c4, c5);
-		
-	}
 }
