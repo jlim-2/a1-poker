@@ -281,11 +281,11 @@ public class HandTest extends TestCase {
 		Card c3 = new Card("H2");
 		Card c4 = new Card("HQ");
 		Card c5 = new Card("H8");
-		Card c6 = new Card("S8");
-		Card c7 = new Card("S9");
-		Card c8 = new Card("S4");
+		Card c6 = new Card("SJ");
+		Card c7 = new Card("SA");
+		Card c8 = new Card("S2");
 		Card c9 = new Card("SQ");
-		Card c10 = new Card("SK");
+		Card c10 = new Card("S8");
 		
 		Hand h1 = new Hand(c1, c2, c3, c4, c5);
 		Hand h2 = new Hand(c6, c7, c8, c9, c10);
@@ -293,7 +293,19 @@ public class HandTest extends TestCase {
 		h1.sortHand();
 		h2.sortHand();
 		
-		assertTrue(h2.compareFlushes(h1));
+		assertTrue(h2.compareFlushes(h1, 0));
+		
+	}
+	
+	//test the detection if the hand is close to making something
+	public void testDetectHands() {
+		Card c1 = new Card("HJ");
+		Card c2 = new Card("HA");
+		Card c3 = new Card("H2");
+		Card c4 = new Card("HQ");
+		Card c5 = new Card("SK");
+		
+		Hand h = new Hand(c1, c2, c3, c4, c5);
 		
 	}
 }
