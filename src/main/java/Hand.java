@@ -376,14 +376,15 @@ public class Hand {
 	}
 	
 	public Boolean compareFlushes(Hand hand, int index) {
-		int i = index;
-		if (this.cards[i].getRankInt() == hand.getCardAtIndex(i).getRankInt()) {
-			return compareFlushes(hand, i + 1);
-		} else {
-			
+		if (this.cards[index].getRankInt() == hand.getCardAtIndex(index).getRankInt() && index < 4) {
+			return compareFlushes(hand, index + 1);
 		}
 		
-		return true;
+		if (this.cards[index].getSuitInt() > hand.getCardAtIndex(index).getSuitInt()) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 	public void rankToString() {
