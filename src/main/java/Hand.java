@@ -4,6 +4,7 @@ public class Hand {
 	private Card[] extraCards;
 	private int rank;
 	private String handRank;
+	private int numCardsToSwap;
 	
 	public Hand(Card c1, Card c2, Card c3, Card c4, Card c5) {
 		cards = new Card[5];
@@ -425,5 +426,56 @@ public class Hand {
 	
 	public String getRankString() {
 		return handRank;
+	}
+	
+	public void detectHand() {
+		//if 3 cards are in sequence
+		//cards will be sorted from largest to smallest
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if ((cards[i].getRankInt() - cards[i + 1].getRankInt()) == 1) {
+				count++;
+			}
+			
+			if (count == 2) {
+				numCardsToSwap = 2;
+			}
+		}
+		
+		//check for 3 cards of the same suit
+		//cards will be sorted from largest rank to smallest
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getSuitInt() == cards[i + 1].getSuitInt()) {
+				count++;
+			}
+			
+			if (count == 2) {
+				numCardsToSwap = 2;
+			}
+		}
+		
+		//check for 3 cards of the same rank
+		//cards sorted from largest to smallest
+		for (int i = 0, count = 0; i < cards.length - 1; i++) {
+			if (cards[i].getRankInt() == cards[i + 1].getRankInt()) {
+				count++;
+			}
+			
+			if (count == 2) {
+				numCardsToSwap = 2;
+			}
+		}
+		
+		//check if there is a pair in the hand
+		if (isPair()) {
+			numCardsToSwap = 3;
+		}
+		
+		//check if there is two pairs in the hand
+		if (isTwoPair()) {
+			numCardsToSwap = 1;
+		}
+		
+		//check if close to flush
+		
 	}
 }

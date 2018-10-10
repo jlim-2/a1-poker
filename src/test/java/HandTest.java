@@ -252,16 +252,10 @@ public class HandTest extends TestCase {
 	public void testSwapCards() {
 		init();
 		
-		h.sortHand();
-		h.evalRank();
-		int prevRank = h.getRank();
-		if (prevRank < 5) {
-			h.swapCards();
-		}
+		Hand prevHand = h;
 		
-		h.evalRank();
-		//could happen that the rank of the hand could be the same
-		assertTrue(h.getRank() > prevRank);
+		h.swapCards(2);
+		
 	}
 	
 	public void testCompareHands() {
