@@ -247,8 +247,6 @@ public class HandTest extends TestCase {
 	public void testSwapCards() {
 		init2();
 		
-		Hand prevHand = h;
-		
 		String[] swapCards = {"HK", "D8", "D6"};
 		ArrayList<Card> extras = new ArrayList<Card>();
 		
